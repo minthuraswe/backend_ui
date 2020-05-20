@@ -1,0 +1,66 @@
+a:hover{
+    text-decoration: none;
+}
+a,.clcc{
+    color: #faf6f7a6;
+}
+ul>a>li:hover{
+    background-color: #06192F;
+    color: #faf6f7;
+}
+.active{
+    background-color: #06192F;
+    color: #faf6f7;
+}
+.card-body>a>h4:hover{
+    color: #faf6f7;
+}
+.sidebar,.card-body{
+    background-color: #091E40!important;
+}
+
+.btn-primary{
+    background-color: #091E40!important;
+    border: none;
+    color: #faf6f7!important;
+}
+.btn-outline-primary{
+    border-color: #091E40!important;
+    color: #000;
+  
+}
+.btn-outline-primary:hover{
+    background-color: #091E40!important;
+    color: #faf6f7!important;
+}
+
+.btn-primary.focus, .btn-primary:focus {
+    background-color: #091E40!important;
+    border-color: #091E40!important;
+    box-shadow: 0 0 0 0.2rem rgba(9,30,64,.5)!important;
+}
+.btn-outline-primary.focus, .btn-outline-primary:focus {
+    background-color: #091E40!important;
+    border-color: #091E40!important;
+    color: #faf6f7;
+    box-shadow: 0 0 0 0.2rem rgba(9,30,64,.5)!important;
+}
+.page-item.active .page-link {
+    color: #faf6f7;
+    background-color: #091E40!important;
+    border-color: #091E40!important;
+}
+.page-link:hover{
+    background-color: rgba(9,30,64,.7);
+    color: #faf6f7;
+}
+.page-link:focus { 
+    box-shadow: none!important;
+}
+.badge-light{
+    background-color: #faf6f7a6!important;
+}
+.card-title{
+    color:#faf6f7a6;
+
+}
