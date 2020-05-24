@@ -37,8 +37,14 @@ class UniversityController extends Controller
      */
     public function store(Request $request)
     {
-        University::create($request->except('_token'));
-        return redirect('/university');
+        $validateData = $request->validate([
+            'name' => 'required',
+        ]);
+
+        University::create([
+            'uni_name' => request('name'),
+        ]);
+        return redirect('university')->with('message', '1 row affected');
     }
 
     /**
@@ -74,10 +80,10 @@ class UniversityController extends Controller
     public function update(Request $request, $id)
     {
         $uni = University::find($id);
-        $uni->uni_name = $request->uni_name;
+        $uni->uni_name = $request->name;
 
         $uni->save();
-        return redirect('/university');
+        return redirect('/university')->with('message', '1 row affected');;
     }
 
     /**
@@ -88,8 +94,7 @@ class UniversityController extends Controller
      */
     public function destroy($id)
     {
-        $uni = University::find($id);
-        $uni->delete();
-        return redirect('/university');
+        $uni = University::find($id)->delete();
+        return redirect('/university')->with('message', '1 row affected');;
     }
 }

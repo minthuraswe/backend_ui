@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Member;
+use App\Phototitle;
 use App\Responsible;
 use App\University;
-use App\Phototitle;
+use Illuminate\Http\Request;
 
 class MemberController extends Controller
 {
@@ -18,9 +18,9 @@ class MemberController extends Controller
      */
     public function index()
     {
-       $mem = Member::paginate(6);
-      
-       return view('member.index',compact('mem'));
+        $mem = Member::paginate(6);
+
+        return view('member.index', compact('mem'));
     }
 
     /**
@@ -33,7 +33,7 @@ class MemberController extends Controller
         $res = Responsible::orderBy('res_name')->get();
         $uni = University::orderBy('uni_name')->get();
         $photo = Phototitle::orderBy('photo_name')->get();
-        return view('member.create',compact('uni','res','photo'));
+        return view('member.create', compact('uni', 'res', 'photo'));
     }
 
     /**
@@ -44,8 +44,21 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        Member::create($request->except('_token'));
-        return redirect('/member');
+        // dd($request->except());
+        $this->validateData($request);
+
+        Member::create([
+            'mem_name' => request('name'),
+            'mem_email' => request('email'),
+            'mem_phone' => request('phone'),
+            'mem_age' => request('age'),
+            'mem_address' => request('address'),
+            'mem_description' => request('description'),
+            'photo_id' => request('photo'),
+            'res_id' => request('position'),
+            'uni_id' => request('university'),
+        ]);
+        return redirect('member')->with('message', '1 row affected');
     }
 
     /**
@@ -60,7 +73,7 @@ class MemberController extends Controller
         $uni = University::all();
         $res = Responsible::all();
         $photo = Phototitle::all();
-        return view('member.show',compact('mem','uni','photo','res'));
+        return view('member.show', compact('mem', 'uni', 'photo', 'res'));
     }
 
     /**
@@ -75,7 +88,7 @@ class MemberController extends Controller
         $uni = University::all();
         $res = Responsible::all();
         $photo = Phototitle::all();
-        return view('member.edit',compact('mem','uni','res','photo'));
+        return view('member.edit', compact('mem', 'uni', 'res', 'photo'));
     }
 
     /**
@@ -92,7 +105,7 @@ class MemberController extends Controller
 
         $mem->save();
 
-        return redirect('/member');
+        return redirect('member')->with('message', '1 row affected');
     }
 
     /**
@@ -105,6 +118,30 @@ class MemberController extends Controller
     {
         $mem = Member::find($id);
         $mem->delete();
-        return redirect('/member');
+        return redirect('member')->with('message', '1 row affected');
+    }
+
+    private function validateData($request)
+    {
+        $validateData = $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'age' => 'required',
+            'phone' => 'required|numeric',
+            'address' => 'required',
+            'position' => 'required',
+            'description' => 'required',
+            'photo' => 'required',
+            'university' => 'required',
+        ]);
+    }
+
+    public function search()
+    {
+        $searchdata = request('search');
+        $search = Member::where('mem_name', 'like', '%'.$searchdata.'%')->paginate(6);
+        $search_count = count($search);
+        
+        return view('member.search', compact('search','search_count','searchdata'));
     }
 }

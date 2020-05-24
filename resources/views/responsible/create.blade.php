@@ -17,9 +17,16 @@
                             <label for="name" class="col-md-3 col-form-label text-md-right">{{ __('Add New Responsible') }}</label>
 
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control" name="res_name" required>
+                            <input id="name" type="text" class="form-control" name="name">
+                            @if($errors->has('name'))
+                            <span class="text-danger font-weight-bold">
+                                {{$errors->first('name')}}
+                            </span>
+                            @endif
                         </div>
-                        <button type="submit" class="btn btn-success">Save</button>
+                        <div>
+                            <button type="submit" class="btn btn-success">Save</button>
+                        </div>
                         </div>
                 </form>
             </div>

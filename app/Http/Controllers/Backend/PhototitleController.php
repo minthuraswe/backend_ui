@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Phototitle;
+use Illuminate\Http\Request;
 
 class PhototitleController extends Controller
 {
@@ -15,8 +15,8 @@ class PhototitleController extends Controller
      */
     public function index()
     {
-        $photo = Phototitle::paginate(6);
-        return view('photo.index',compact('photo'));
+        $photo = Phototitle::paginate(5);
+        return view('photo.index', compact('photo'));
     }
 
     /**
@@ -37,18 +37,20 @@ class PhototitleController extends Controller
      */
     public function store(Request $request)
     {
-        $extension = $request->image; 
-        $filename = uniqid().'.'.$extension->getClientOriginalExtension();
-        $path = public_path(). '/uploads/';
+        $this->validateData($request);
+
+        $extension = $request->photo;
+        $filename = uniqid() . '.' . $extension->getClientOriginalExtension();
+        $path = public_path() . '/uploads/';
         $extension->move($path, $filename);
 
-        $photo = new Phototitle;
-        $photo->photo_name = $request->photo_name;
-        $photo->image = $filename;
-        $photo->photo_for_what = $request->photo_for_what;
+        Phototitle::create([
+            'photo_name' => request('name'),
+            'image' => $filename,
+            'photo_for_what' => request('category'),
+        ]);
 
-        $photo->save();
-        return redirect('/photo');
+        return redirect('photo')->with('message', '1 row affected');
     }
 
     /**
@@ -71,7 +73,7 @@ class PhototitleController extends Controller
     public function edit($id)
     {
         $photo = Phototitle::find($id);
-        return view('photo.edit',compact('photo'));
+        return view('photo.edit', compact('photo'));
     }
 
     /**
@@ -83,18 +85,18 @@ class PhototitleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $extension = $request->image; 
-        $filename = uniqid().'.'.$extension->getClientOriginalExtension();
-        $path = public_path(). '/uploads/';
+        $extension = $request->photo;
+        $filename = uniqid() . '.' . $extension->getClientOriginalExtension();
+        $path = public_path() . '/uploads/';
         $extension->move($path, $filename);
 
         $photo = Phototitle::find($id);
-        $photo->photo_name = $request->photo_name;
+        $photo->photo_name = $request->name;
         $photo->image = $filename;
-        $photo->photo_for_what = $request->photo_for_what;
+        $photo->photo_for_what = $request->category;
 
-        $photo ->save();
-        return redirect('/photo');
+        $photo->save();
+        return redirect('photo')->with('message', '1 row affected');
     }
 
     /**
@@ -105,8 +107,16 @@ class PhototitleController extends Controller
      */
     public function destroy($id)
     {
-        $photo = Phototitle::find($id);
-        $photo->delete();
-        return redirect('/photo');
+        $photo = Phototitle::find($id)->delete();
+        return redirect('photo')->with('message', '1 row affected');
+    }
+
+    private function validateData($request)
+    {
+        $validateData = $request->validate([
+            'name' => 'required',
+            'photo' => 'required|mimes:jpeg, jpg, png',
+            'category' => 'required',
+        ]);
     }
 }

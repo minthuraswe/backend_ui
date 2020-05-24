@@ -14,7 +14,7 @@
                                 <label for="name" class="col-md-3 col-form-label text-md-right">{{ __('Add New Responsible') }}</label>
     
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="res_name" value="{{$res->res_name}}">
+                                <input id="name" type="text" class="form-control" name="name" value="{{$res->res_name}}" required>
                             </div>
                             <button type="submit" class="btn btn-success mr-2">Update</button>
                             <a href="{{url('/responsible')}}" class="btn btn-secondary">Cancel</a>

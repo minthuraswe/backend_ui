@@ -16,31 +16,46 @@
                 <form action="{{url('/photo')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group row mt-3">
-                        <label for="name" class="col-md-3 col-form-label text-md-right">{{ __('Name') }}</label>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="photo_name" placeholder="Photo Name" required>
+                        <label for="name" class="col-md-2 col-form-label text-md-right">{{ __('Name') }}</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="name" placeholder="Photo Name" value="{{old('name')}}">
+                            @if($errors->has('name'))
+                            <span class="text-danger font-weight-bold">
+                                {{$errors->first('name')}}
+                            </span>
+                            @endif
                         </div>
                     </div>
                     <div class="form-group row mt-3">
-                        <label for="text" class="col-md-3 col-form-label text-md-right">{{ __('Photo') }}</label>
-                        <div class="col-md-6">
-                            <input type="file" class="form-control" id="validatedCustomFile" name="image" required>
+                        <label for="text" class="col-md-2 col-form-label text-md-right">{{ __('Photo') }}</label>
+                        <div class="col-md-8">
+                            <input type="file" class="form-control " id="validatedCustomFile" name="photo" >
+                            @if($errors->has('photo'))
+                            <span class="text-danger font-weight-bold">
+                                {{$errors->first('photo')}}
+                            </span>
+                            @endif
                         </div>
                     </div>
                     <div class="form-group row mt-3">
                         <label for="email"
-                            class="col-md-3 col-form-label text-md-right">{{ __('Phot For What') }}</label>
-                        <div class="col-md-6">
-                            <select name="photo_for_what" id="" class="form-control" required>
-                                <option> Select Category</option>
-                                <option>Activity</option>
-                                <option>Member</option>
-                                <option>News</option>
+                            class="col-md-2 col-form-label text-md-right">{{ __('Photo For What') }}</label>
+                        <div class="col-md-8">
+                            <select name="category" id="" class="form-control">
+                                <option value=""> Select Category</option>
+                                <option {{old('category') == 'Activity' ? "selected" : ''}}>Activity</option>
+                                <option {{old('category') == 'Member' ? "selected" : ''}}>Member</option>
+                                <option {{old('category') == 'Post' ? "selected" : ''}}>Post</option>
                             </select>
+                            @if($errors->has('category'))
+                            <span class="text-danger font-weight-bold">
+                                {{$errors->first('category')}}
+                            </span>
+                            @endif
                         </div>
                     </div>
                     <div class="row form-group mt-3 justify-content-center">
-                        <div class="col-md-6">
+                        <div class="col-md-8">
                             <button type="submit" class="btn btn-success">Save</button>
                         </div>
                     </div>

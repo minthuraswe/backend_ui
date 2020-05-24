@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Activity;
 use App\Category;
+use App\Http\Controllers\Controller;
 use App\Phototitle;
+use Illuminate\Http\Request;
 
 class ActivityController extends Controller
 {
@@ -17,7 +17,7 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        $act = Activity::paginate(6);
+        $act = Activity::paginate(5);
         return view('activity.index', compact('act'));
     }
 
@@ -41,20 +41,27 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-        // $file = $request->act_memory; 
-        $extension = $request->act_memory; 
-        $filename = uniqid().'.'.$extension->getClientOriginalExtension();
-        $path = public_path(). '/uploads/';
-        $extension->move($path, $filename);
+        
+        $this->validateData($request);
 
-        $act = new Activity;
-        $act->act_name = $request->act_name;
-        $act->cat_id = $request->cat_id;
-        $act->photo_id = $request->photo_id;
-        $act->act_memory = $filename;
+        $mem = $request->memory;
+        $ary = array();
+        
+        foreach ($mem as $data) {
+            $filename = uniqid() . '.' . $data->getClientOriginalExtension();
+            array_push($ary, $filename);
+            $path = public_path() . '/uploads/';
+            $data->move($path, $filename);
+        }
 
-        $act->save();
-        return redirect('/activity');
+        Activity::create([
+            'act_name' => request('name'),
+            'cat_id' => request('category'),
+            'photo_id' => request('photo'),
+            'act_memory' => serialize($ary),
+        ]);
+
+        return redirect('activity')->with('message', '1 row affected');
     }
 
     /**
@@ -80,6 +87,7 @@ class ActivityController extends Controller
     public function edit($id)
     {
         $act = Activity::find($id);
+        // dd($act);
         $cat = Category::all();
         $photo = Phototitle::all();
         return view('activity.edit', compact('act', 'cat', 'photo'));
@@ -94,21 +102,26 @@ class ActivityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $file = $request->act_memory; 
-        $extension = $request->act_memory; 
-        $filename = uniqid(). '.' . $extension->getClientOriginalExtension();
-        $path = public_path(). '/uploads/';
-        $extension->move($path, $filename);
+        $mem = $request->act_memory;
+        $ary = array();
+
+        foreach ($mem as $data) {
+            $filename = uniqid() . '.' . $data->getClientOriginalExtension();
+            array_push($ary, $filename);
+            $path = public_path() . '/uploads/';
+            $data->move($path, $filename);
+        }
+       
 
         $act = Activity::find($id);
 
         $act->act_name = $request->act_name;
         $act->cat_id = $request->cat_id;
         $act->photo_id = $request->photo_id;
-        $act->act_memory = $filename;
+        $act->act_memory = serialize($ary);
 
         $act->save();
-        return redirect('/activity');
+        return redirect('activity')->with('message', '1 row affected');
     }
 
     /**
@@ -119,6 +132,17 @@ class ActivityController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Activity::find($id)->delete();
+        return redirect('activity')->with('message', '1 row affected');
+    }
+
+    private function validateData($request){
+        $validateData = $request->validate([
+            'name' => 'required',
+            'category' => 'required',
+            'photo' => 'required',
+            'memory' => 'required',
+            'memory.*' => 'required|mimes:jpeg, jpg, png',
+        ]);
     }
 }

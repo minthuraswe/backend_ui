@@ -12,8 +12,11 @@
                     <a href="{{url('/home')}}" class="btn btn-outline-primary mb-3 p-2">Click Here To Go Back</a>
                 </div>
             </div>
-
-
+            @if(session('message'))
+            <div class="alert alert-success">
+                <span class="font-weight-bold">{{session('message')}}</span>
+            </div>
+            @endif
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -30,7 +33,9 @@
                         <tr>
                             <td>{{$item->id}}</td>
                             <td>{{$item->photo_name}}</td>
-                            <td>{{$item->image}}</td>
+                            <td>
+                                <img src="{{asset('/uploads/' . $item->image)}}" width="40px" height="40px" title="{{$item->image}}" >
+                            </td>
                             <td class="font-weight-bold">{{$item->photo_for_what}}</td>
                             <td>{{$item->updated_at->diffforHumans()}}</td>
                             <td>

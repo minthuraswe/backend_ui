@@ -17,26 +17,26 @@
                     <div class="form-group row mt-3">
                         <label for="name" class="col-md-3 col-form-label text-md-right">{{ __('Name') }}</label>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="photo_name" placeholder="Photo Name"
+                            <input type="text" class="form-control" name="name" placeholder="Photo Name"
                                 value="{{$photo->photo_name}}" required>
                         </div>
                     </div>
                     <div class="form-group row mt-3">
                         <label for="text" class="col-md-3 col-form-label text-md-right">{{ __('Photo') }}</label>
                         <div class="col-md-6">
-                            <input type="file" class="form-control" id="validatedCustomFile" name="image" required>
-                            {{-- <input type="hidden" name="image" value="{{ $photo->image }}" /> --}}
+                            <input type="file" class="form-control" id="validatedCustomFile" name="photo" required>
+                            <img src="{{asset('/uploads/' . $photo->image)}}" width="40px" height="40px" title="{{$photo->image}}" class="mt-1">
                         </div>
                     </div>
                     <div class="form-group row mt-3">
                         <label for="email"
-                            class="col-md-3 col-form-label text-md-right">{{ __('Phot For What') }}</label>
+                            class="col-md-3 col-form-label text-md-right">{{ __('Photo For What') }}</label>
                         <div class="col-md-6">
-                            <select name="photo_for_what" id="" class="form-control" required>
-                                <option> Choose Category</option>
-                                <option {{$photo->photo_for_what == "Activity" ? 'selected' : ''}}>Activity</option>
-                                <option {{$photo->photo_for_what == "Member" ? 'selected' : ''}}>Member</option>
-                                <option {{$photo->photo_for_what == "News" ? 'selected' : ''}}>News</option>
+                            <select name="category" id="" class="form-control" required>
+                                <option value=""> Choose Category</option>
+                                <option {{$photo->photo_for_what == 'Activity' ? 'selected' : ''}}>Activity</option>
+                                <option {{$photo->photo_for_what == 'Member' ? 'selected' : ''}}>Member</option>
+                                <option {{$photo->photo_for_what == 'Post' ? 'selected' : ''}}>Post</option>
                             </select>
                         </div>
                     </div>

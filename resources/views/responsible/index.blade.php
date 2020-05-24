@@ -10,7 +10,11 @@
                         <a href="{{url('/home')}}" class="btn btn-outline-primary mb-3 p-2">Click Here To Go Back</a>
                     </div>
                 </div>
-                
+                @if(session('message'))
+                <div class="alert alert-success">
+                    <span class="font-weight-bold">{{session('message')}}</span>
+                </div>
+                @endif
              
                     <table class="table table-striped">
                         <thead>

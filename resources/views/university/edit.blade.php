@@ -17,8 +17,8 @@
                             class="col-md-3 col-form-label text-md-right">{{ __('Add New Responsible') }}</label>
 
                         <div class="col-md-6">
-                            <input id="name" type="text" class="form-control" name="uni_name"
-                                value="{{$uni->uni_name}}">
+                            <input id="name" type="text" class="form-control" name="name"
+                                value="{{$uni->uni_name}}" required>
 
                         </div>
                         <button type="submit" class="btn btn-success mr-2">Update</button>

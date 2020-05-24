@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Category;
 
 class CategoryController extends Controller
 {
@@ -16,7 +16,7 @@ class CategoryController extends Controller
     public function index()
     {
         $cat = Category::paginate(5);
-        return view('category.index',compact('cat'));
+        return view('category.index', compact('cat'));
     }
 
     /**
@@ -37,8 +37,14 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        Category::create($request->except('_token'));
-        return redirect('/category');
+        $validateData = $request->validate([
+            'category' => 'required',
+        ]);
+
+        Category::create([
+            'cat_name' => request('category'),
+        ]);
+        return redirect('category')->with('message', '1 row affected');
     }
 
     /**
@@ -61,7 +67,7 @@ class CategoryController extends Controller
     public function edit($id)
     {
         $cat = Category::find($id);
-        return view('category.edit',compact('cat'));
+        return view('category.edit', compact('cat'));
     }
 
     /**
@@ -75,10 +81,10 @@ class CategoryController extends Controller
     {
         $cat = Category::find($id);
 
-        $cat->cat_name = $request->cat_name;
+        $cat->cat_name = $request->name;
         $cat->save();
 
-        return redirect('/category');
+        return redirect('category')->with('message', '1 row affected');
     }
 
     /**
@@ -91,6 +97,6 @@ class CategoryController extends Controller
     {
         $cat = Category::find($id);
         $cat->delete();
-        return redirect('/category');
+        return redirect('category')->with('message', '1 row affected');
     }
 }

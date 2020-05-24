@@ -38,8 +38,15 @@ class ResponsibleController extends Controller
      */
     public function store(Request $request)
     {
-        Responsible::create($request->except('_token'));
-        return redirect('/responsible');
+        $validateData = $request->validate([
+            'name' => 'required',
+        ]);
+
+        Responsible::create([
+            'res_name' => request('name'),
+        ]);
+
+        return redirect('responsible')->with('message', '1 row affected');
     }
 
     /**
@@ -75,10 +82,10 @@ class ResponsibleController extends Controller
     public function update(Request $request, $id)
     {
         $res = Responsible::find($id);
-        $res->res_name = $request->res_name;
+        $res->res_name = $request->name;
 
         $res->save();
-        return redirect('/responsible');
+        return redirect('responsible')->with('message', '1 row affected');
     }
 
     /**
@@ -89,8 +96,7 @@ class ResponsibleController extends Controller
      */
     public function destroy($id)
     {
-        $res = Responsible::find($id);
-        $res->delete();
-        return redirect('/responsible');
+        $res = Responsible::find($id)->delete();
+        return redirect('responsible')->with('message', '1 row affected');
     }
 }

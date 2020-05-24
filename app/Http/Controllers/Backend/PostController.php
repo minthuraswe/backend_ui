@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Post;
 use App\Category;
+use App\Http\Controllers\Controller;
 use App\Phototitle;
+use App\Post;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -30,7 +30,7 @@ class PostController extends Controller
     {
         $cat = Category::orderBy('cat_name')->get();
         $photo = Phototitle::orderBy('photo_name')->get();
-        return view('post.create', compact('cat','photo'));
+        return view('post.create', compact('cat', 'photo'));
     }
 
     /**
@@ -41,8 +41,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        Post::create($request->except('_token'));
-        return redirect('/post');
+        $this->validateData($request);
+
+        Post::create([
+            'post_title' => request('post'),
+            'photo_id' => request('photo'),
+            'cat_id' => request('category'),
+            'post_description' => request('description'),
+        ]);
+        return redirect('/post')->with('message', '1 row affected');
     }
 
     /**
@@ -56,7 +63,7 @@ class PostController extends Controller
         $post = Post::find($id);
         $cat = Category::all();
         $photo = Phototitle::all();
-        return view('post.show', compact('post','cat','photo'));
+        return view('post.show', compact('post', 'cat', 'photo'));
     }
 
     /**
@@ -70,7 +77,7 @@ class PostController extends Controller
         $post = Post::find($id);
         $cat = Category::all();
         $photo = Phototitle::all();
-        return view('post.edit',compact('post','cat','photo'));
+        return view('post.edit', compact('post', 'cat', 'photo'));
     }
 
     /**
@@ -86,7 +93,7 @@ class PostController extends Controller
         $post->fill($request->except('_token'));
 
         $post->save();
-        return redirect('/post');
+        return redirect('/post')->with('message', '1 row affected');
     }
 
     /**
@@ -99,6 +106,16 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $post->delete();
-        return redirect('/post');
+        return redirect('/post')->with('message', '1 row affected');
+    }
+
+    private function validateData($request)
+    {
+        $validateData = $request->validate([
+            'post' => 'required',
+            'photo' => 'required',
+            'category' => 'required',
+            'description' => 'required',
+        ]);
     }
 }
