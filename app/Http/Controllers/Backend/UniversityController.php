@@ -44,7 +44,8 @@ class UniversityController extends Controller
         University::create([
             'uni_name' => request('name'),
         ]);
-        return redirect('university')->with('message', '1 row affected');
+        flash();
+        return redirect('university');
     }
 
     /**
@@ -83,7 +84,8 @@ class UniversityController extends Controller
         $uni->uni_name = $request->name;
 
         $uni->save();
-        return redirect('/university')->with('message', '1 row affected');;
+        flash();
+        return redirect('/university');
     }
 
     /**
@@ -95,6 +97,7 @@ class UniversityController extends Controller
     public function destroy($id)
     {
         $uni = University::find($id)->delete();
-        return redirect('/university')->with('message', '1 row affected');;
+        flash();
+        return redirect('/university');
     }
 }

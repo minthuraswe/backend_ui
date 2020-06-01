@@ -60,8 +60,8 @@ class ActivityController extends Controller
             'photo_id' => request('photo'),
             'act_memory' => serialize($ary),
         ]);
-
-        return redirect('activity')->with('message', '1 row affected');
+        flash();
+        return redirect('activity');
     }
 
     /**
@@ -120,8 +120,14 @@ class ActivityController extends Controller
         $act->photo_id = $request->photo_id;
         $act->act_memory = serialize($ary);
 
+        // @foreach(unserialize($ary) as $data){
+        // <img src="{{asset('/uploads/'. $data)}}" width="40px" height="40px" class="rounded"
+        // title="{{$data}}">
+        // }
+
         $act->save();
-        return redirect('activity')->with('message', '1 row affected');
+        flash();
+        return redirect('activity');
     }
 
     /**
@@ -133,7 +139,8 @@ class ActivityController extends Controller
     public function destroy($id)
     {
         Activity::find($id)->delete();
-        return redirect('activity')->with('message', '1 row affected');
+        flash();
+        return redirect('activity');
     }
 
     private function validateData($request){

@@ -9,6 +9,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Chin Literature & Culture Committee</title>
+    <link rel="shortcut icon" href="{{asset('css/images/clcc_logo.jpg')}}" >
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>

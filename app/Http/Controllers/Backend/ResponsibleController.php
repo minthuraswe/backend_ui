@@ -45,8 +45,8 @@ class ResponsibleController extends Controller
         Responsible::create([
             'res_name' => request('name'),
         ]);
-
-        return redirect('responsible')->with('message', '1 row affected');
+        flash();
+        return redirect('responsible');
     }
 
     /**
@@ -85,7 +85,8 @@ class ResponsibleController extends Controller
         $res->res_name = $request->name;
 
         $res->save();
-        return redirect('responsible')->with('message', '1 row affected');
+        flash();
+        return redirect('responsible');
     }
 
     /**
@@ -97,6 +98,7 @@ class ResponsibleController extends Controller
     public function destroy($id)
     {
         $res = Responsible::find($id)->delete();
-        return redirect('responsible')->with('message', '1 row affected');
+        flash();
+        return redirect('responsible');
     }
 }

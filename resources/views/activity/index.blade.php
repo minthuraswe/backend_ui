@@ -43,9 +43,13 @@
                             {{$cat->cat_name}}
                         </td>
                         <td>
-                            @foreach(unserialize($item->act_memory) as $data)
-                            <img src="{{asset('/uploads/'. $data)}}" width="40px" height="40px" class="rounded"
-                                title="{{$data}}">
+                            <?php
+                            $ary = unserialize($item->act_memory);
+                            $ary_limit = array_slice($ary, 0,4);
+                            ?>
+                            @foreach ($ary_limit as $image)
+                            <img src="{{asset('/uploads/'. $image)}}" width="40px" height="40px" class="rounded"
+                                title="{{$image}}">
                             @endforeach
                         </td>
                         <td>{{$item->updated_at->diffforHumans()}}</td>

@@ -49,8 +49,8 @@ class PhototitleController extends Controller
             'image' => $filename,
             'photo_for_what' => request('category'),
         ]);
-
-        return redirect('photo')->with('message', '1 row affected');
+        flash();
+        return redirect('photo');
     }
 
     /**
@@ -96,7 +96,8 @@ class PhototitleController extends Controller
         $photo->photo_for_what = $request->category;
 
         $photo->save();
-        return redirect('photo')->with('message', '1 row affected');
+        flash();
+        return redirect('photo');
     }
 
     /**
@@ -108,7 +109,8 @@ class PhototitleController extends Controller
     public function destroy($id)
     {
         $photo = Phototitle::find($id)->delete();
-        return redirect('photo')->with('message', '1 row affected');
+        flash();
+        return redirect('photo');
     }
 
     private function validateData($request)

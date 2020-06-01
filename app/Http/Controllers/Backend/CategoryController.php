@@ -44,7 +44,8 @@ class CategoryController extends Controller
         Category::create([
             'cat_name' => request('category'),
         ]);
-        return redirect('category')->with('message', '1 row affected');
+        flash();
+        return redirect('category');
     }
 
     /**
@@ -83,8 +84,8 @@ class CategoryController extends Controller
 
         $cat->cat_name = $request->name;
         $cat->save();
-
-        return redirect('category')->with('message', '1 row affected');
+        flash();
+        return redirect('category');
     }
 
     /**
@@ -95,8 +96,8 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $cat = Category::find($id);
-        $cat->delete();
-        return redirect('category')->with('message', '1 row affected');
+        $cat = Category::find($id)->delete();
+        flash();
+        return redirect('category');
     }
 }

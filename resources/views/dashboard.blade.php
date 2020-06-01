@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chin Literature & Culture Committee</title>
-
+    <link rel="shortcut icon" href="{{asset('css/images/clcc_logo.jpg')}}" >
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.16/dist/summernote-lite.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">

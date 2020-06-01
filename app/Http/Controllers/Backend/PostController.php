@@ -49,7 +49,8 @@ class PostController extends Controller
             'cat_id' => request('category'),
             'post_description' => request('description'),
         ]);
-        return redirect('/post')->with('message', '1 row affected');
+        flash();
+        return redirect('/post');
     }
 
     /**
@@ -93,7 +94,8 @@ class PostController extends Controller
         $post->fill($request->except('_token'));
 
         $post->save();
-        return redirect('/post')->with('message', '1 row affected');
+        flash();
+        return redirect('/post');
     }
 
     /**
@@ -104,9 +106,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id);
-        $post->delete();
-        return redirect('/post')->with('message', '1 row affected');
+        $post = Post::find($id)->delete();;
+        flash();
+        return redirect('/post');
     }
 
     private function validateData($request)

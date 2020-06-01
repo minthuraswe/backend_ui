@@ -3,11 +3,12 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Member;
 use App\Phototitle;
 use App\Responsible;
 use App\University;
-use Illuminate\Http\Request;
+
 
 class MemberController extends Controller
 {
@@ -58,7 +59,8 @@ class MemberController extends Controller
             'res_id' => request('position'),
             'uni_id' => request('university'),
         ]);
-        return redirect('member')->with('message', '1 row affected');
+        flash();
+        return redirect('member');
     }
 
     /**
@@ -104,8 +106,8 @@ class MemberController extends Controller
         $mem->fill($request->except('_token'));
 
         $mem->save();
-
-        return redirect('member')->with('message', '1 row affected');
+        flash();
+        return redirect('member');
     }
 
     /**
@@ -116,9 +118,9 @@ class MemberController extends Controller
      */
     public function destroy($id)
     {
-        $mem = Member::find($id);
-        $mem->delete();
-        return redirect('member')->with('message', '1 row affected');
+        $mem = Member::find($id)->delete();
+        flash();
+        return redirect('member');
     }
 
     private function validateData($request)
@@ -139,7 +141,7 @@ class MemberController extends Controller
     public function search()
     {
         $searchdata = request('search');
-        $search = Member::where('mem_name', 'like', '%'.$searchdata.'%')->paginate(6);
+        $search = Member::where('mem_name', 'like', '%'.$searchdata.'%')->paginate();
         $search_count = count($search);
         
         return view('member.search', compact('search','search_count','searchdata'));
