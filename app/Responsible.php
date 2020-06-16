@@ -10,6 +10,22 @@ class Responsible extends Model
         'res_name',
     ];
 
+    public static function boot(){
+        parent::boot();
+
+        static::created(function(){
+            flash();
+        });
+
+        static::updated(function(){
+            flash();
+        });
+
+        static::deleted(function(){
+            flash();
+        });
+    }
+
     public function member(){
         return $this->belongsTo('App\Member');
     }

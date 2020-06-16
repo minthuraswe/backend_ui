@@ -1,4 +1,4 @@
-@extends('dashboard')
+@extends('layouts.master')
 @section('content')
 <div class="container">
     <div class="row p-4 mt-2">
@@ -30,7 +30,7 @@
                     </div>
                     <div class="form-group row mt-3">
                         <label for="email"
-                            class="col-md-3 col-form-label text-md-right">{{ __('Photo For What') }}</label>
+                            class="col-md-3 col-form-label text-md-right">{{ __('Category') }}</label>
                         <div class="col-md-6">
                             <select name="category" id="" class="form-control" required>
                                 <option value=""> Choose Category</option>

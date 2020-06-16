@@ -1,4 +1,4 @@
-@extends('dashboard')
+@extends('layouts.master')
 @section('content')
 <div class="container">
     <div class="row p-4 mt-2">
@@ -8,7 +8,7 @@
                     <h2>Creating Member</h2>
                 </div>
                 <div class="ml-auto">
-                    <a href="{{url('/member')}}" class="btn btn-primary mb-3 p-2">Click Here To Go Back</a>
+                    <a href="{{url('/member')}}" class="btn btn-primary mb-3 p-2">Back</a>
                 </div>
             </div>
             <div class="card">
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     <div class="form-group row mt-3">
-                        <label for="text" class="col-md-2 col-form-label text-md-right">{{ __('Positon') }}</label>
+                        <label for="text" class="col-md-2 col-form-label text-md-right">{{ __('Position') }}</label>
                         <div class="col-md-8">
                             <select name="position" class="form-control">
                                 <option value=""> Select Position</option>
@@ -131,8 +131,9 @@
                         <label for="address" class="col-md-2 col-form-label text-md-right">{{ __('Address') }}</label>
                         <div class="col-md-8">
 
-                            <textarea rows="3" class="form-control summernote" name="address"
-                                placeholder="Member Address">{{strip_tags(old('address'))}}</textarea>
+                            <textarea  name="address" placeholder="Member Address">
+                                {{old('address')}}
+                            </textarea>
                             @if($errors->has('address'))
                             <span class="text-danger font-weight-bold">
                                 {{$errors->first('address')}}
@@ -143,9 +144,9 @@
                     <div class="form-group row mt-3">
                         <label for="text" class="col-md-2 col-form-label text-md-right">{{ __('Description') }}</label>
                         <div class="col-md-8">
-
-                            <textarea rows="10" class="form-control" name="description" id="summernote"
-                                placeholder="Member Description">{{strip_tags(old('description'))}}</textarea>
+                            <textarea name="description" placeholder="Member Description">
+                                {{old('description')}}
+                            </textarea>
                             @if($errors->has('description'))
                             <span class="text-danger font-weight-bold">
                                 {{$errors->first('description')}}
@@ -170,32 +171,9 @@
 
 @push('scripts')
 <script>
-    $('#summernote').summernote({
-        placeholder: 'Member Description',
-        tabsize: 2,
-        height: 120,
-        toolbar: [
-    // ['style', ['style']],
-    ['font', ['bold', 'underline', 'clear']],
-    ['para', ['ul', 'ol']],
-    // ['table', ['table']],
-    // ['insert', ['picture']],
-    ['view', ['fullscreen', 'help']]
-        ]
-    });
-
-    $('.summernote').summernote({
-        placeholder: 'Member Address',
-        tabsize: 2,
-        height: 120,
-        toolbar: [
-    // ['style', ['style']],
-    ['font', ['bold', 'underline', 'clear']],
-    ['para', ['ul', 'ol']],
-    // ['table', ['table']],
-    // ['insert', ['picture']],
-    ['view', ['fullscreen', 'help']]
-        ]
-});
+    tinymce.init({
+        selector: 'textarea',
+        height: 260,
+    }); 
 </script>
 @endpush

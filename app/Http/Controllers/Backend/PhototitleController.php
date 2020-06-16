@@ -15,7 +15,7 @@ class PhototitleController extends Controller
      */
     public function index()
     {
-        $photo = Phototitle::paginate(5);
+        $photo = Phototitle::paginate(10);
         return view('photo.index', compact('photo'));
     }
 
@@ -37,11 +37,12 @@ class PhototitleController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validateData($request);
-
+        $this->validateData($request);  //validation form
+        
+        //image uploading and creating path
         $extension = $request->photo;
         $filename = uniqid() . '.' . $extension->getClientOriginalExtension();
-        $path = public_path() . '/uploads/';
+        $path = imagePath(); 
         $extension->move($path, $filename);
 
         Phototitle::create([
@@ -49,8 +50,9 @@ class PhototitleController extends Controller
             'image' => $filename,
             'photo_for_what' => request('category'),
         ]);
-        flash();
+
         return redirect('photo');
+        
     }
 
     /**
@@ -96,7 +98,6 @@ class PhototitleController extends Controller
         $photo->photo_for_what = $request->category;
 
         $photo->save();
-        flash();
         return redirect('photo');
     }
 
@@ -109,7 +110,6 @@ class PhototitleController extends Controller
     public function destroy($id)
     {
         $photo = Phototitle::find($id)->delete();
-        flash();
         return redirect('photo');
     }
 

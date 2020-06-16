@@ -1,4 +1,4 @@
-@extends('dashboard')
+@extends('layouts.master')
 @section('content')
 <div class="container">
     <div class="row p-4 mt-2">
@@ -8,24 +8,24 @@
                     <h2>Activity Details</h2>
                 </div>
                 <div class="ml-auto">
-                    <a href="{{url('/activity')}}" class="btn btn-primary mb-3 p-2">Click Here To Go Back</a>
+                    <a href="{{url('/activity')}}" class="btn btn-primary mb-3 p-2">Back</a>
                 </div>
             </div>
             <div class="card">
                 <ul style="list-style:none;" class="p-0 mb-0">
-                    <li class="pl-3 border-bottom py-2">
+                    <li class="px-3 border-bottom py-2">
                         Name = {{$act->act_name}}
                     </li>
-                    <li class="pl-3 border-bottom py-2">
+                    <li class="px-3 border-bottom py-2">
                         <?php $cat = App\Category::find($act->cat_id); ?>
-                        Category = {{$cat->cat_name}}
+                        Category = <span class="badge badge-info px-2 py-1 mb-1">{{$cat->cat_name}}</span>
                     </li>
-                    <li class="pl-3 border-bottom py-2">
+                    <li class="px-3 border-bottom py-2">
                         <?php $photo = App\Phototitle::find($act->photo_id); ?>
                         Photo Heading = <img src="{{asset('/uploads/'. $photo->image)}}" width="auto" height="50px" title="{{$photo->image}}">
                     </li>
-                    <li class="pl-3 border-bottom py-2">
-                        Memories = 
+                    <li class="px-3 border-bottom py-2">
+                        Image = 
                         @foreach(unserialize($act->act_memory) as $data)
                         <img src="{{asset('/uploads/'. $data)}}" width="50px" height="50px" class="rounded" title="{{$data}}">
                         @endforeach

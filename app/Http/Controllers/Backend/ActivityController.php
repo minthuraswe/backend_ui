@@ -1,12 +1,12 @@
 <?php
 
 namespace App\Http\Controllers\Backend;
-
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Activity;
 use App\Category;
-use App\Http\Controllers\Controller;
 use App\Phototitle;
-use Illuminate\Http\Request;
+
 
 class ActivityController extends Controller
 {
@@ -17,7 +17,7 @@ class ActivityController extends Controller
      */
     public function index()
     {
-        $act = Activity::paginate(5);
+        $act = Activity::paginate(10);
         return view('activity.index', compact('act'));
     }
 
@@ -41,13 +41,12 @@ class ActivityController extends Controller
      */
     public function store(Request $request)
     {
-        
         $this->validateData($request);
 
-        $mem = $request->memory;
+        $activity_image = request('memory');
         $ary = array();
-        
-        foreach ($mem as $data) {
+
+        foreach ($activity_image as $data) {
             $filename = uniqid() . '.' . $data->getClientOriginalExtension();
             array_push($ary, $filename);
             $path = public_path() . '/uploads/';
@@ -60,7 +59,7 @@ class ActivityController extends Controller
             'photo_id' => request('photo'),
             'act_memory' => serialize($ary),
         ]);
-        flash();
+
         return redirect('activity');
     }
 
@@ -102,16 +101,15 @@ class ActivityController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $mem = $request->act_memory;
+        $activity_image = request('memory');
         $ary = array();
 
-        foreach ($mem as $data) {
+        foreach ($activity_image as $data) {
             $filename = uniqid() . '.' . $data->getClientOriginalExtension();
             array_push($ary, $filename);
-            $path = public_path() . '/uploads/';
+            $path = imagePath();
             $data->move($path, $filename);
         }
-       
 
         $act = Activity::find($id);
 
@@ -120,13 +118,7 @@ class ActivityController extends Controller
         $act->photo_id = $request->photo_id;
         $act->act_memory = serialize($ary);
 
-        // @foreach(unserialize($ary) as $data){
-        // <img src="{{asset('/uploads/'. $data)}}" width="40px" height="40px" class="rounded"
-        // title="{{$data}}">
-        // }
-
         $act->save();
-        flash();
         return redirect('activity');
     }
 
@@ -139,11 +131,11 @@ class ActivityController extends Controller
     public function destroy($id)
     {
         Activity::find($id)->delete();
-        flash();
         return redirect('activity');
     }
 
-    private function validateData($request){
+    private function validateData($request)
+    {
         $validateData = $request->validate([
             'name' => 'required',
             'category' => 'required',

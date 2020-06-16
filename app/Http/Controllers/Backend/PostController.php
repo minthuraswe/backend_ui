@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Category;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
+use App\Category;
 use App\Phototitle;
 use App\Post;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $post = Post::paginate(6);
+        $post = Post::paginate(10);
         return view('post.index', compact('post'));
     }
 
@@ -42,6 +43,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $this->validateData($request);
+        // dd($truncated);
 
         Post::create([
             'post_title' => request('post'),
@@ -49,7 +51,7 @@ class PostController extends Controller
             'cat_id' => request('category'),
             'post_description' => request('description'),
         ]);
-        flash();
+    
         return redirect('/post');
     }
 
@@ -91,10 +93,12 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         $post = Post::find($id);
-        $post->fill($request->except('_token'));
+        $post->post_title = request('post');
+        $post->photo_id = request('photo');
+        $post->cat_id = request('category');
+        $post->post_description = request('description');
 
         $post->save();
-        flash();
         return redirect('/post');
     }
 
@@ -106,8 +110,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id)->delete();;
-        flash();
+        $post = Post::find($id)->delete();
         return redirect('/post');
     }
 
@@ -120,4 +123,5 @@ class PostController extends Controller
             'description' => 'required',
         ]);
     }
+
 }

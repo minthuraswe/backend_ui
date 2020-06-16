@@ -1,4 +1,4 @@
-@extends('dashboard')
+@extends('layouts.master')
 @section('content')
 <div class="container">
     <div class="row p-4 mt-2">
@@ -49,22 +49,18 @@
                         </div>
                     </div>
                     <div class="form-group row mt-3">
-                        <label for="text" class="col-md-2 col-form-label text-md-right">{{ __('Memory') }}</label>
+                        <label for="text" class="col-md-2 col-form-label text-md-right">{{ __('Image') }}</label>
                         <div class="col-md-8">
                             <input type="file" multiple class="form-control" id="validatedCustomFile"
-                                name="act_memory[]" required>
-
+                                name="memory[]" required>
                             @foreach(unserialize($act->act_memory) as $data)
-                            <img src="{{asset('/uploads/'. $data)}}" width="40px" height="40px" class="rounded mt-3" title="{{$data}}">
+                            <img src="{{asset('/uploads/'. $data)}}" width="40px" height="40px" class="rounded mt-3"
+                                title="{{$data}}">
                             @endforeach
-                            
-
-
-
                         </div>
                     </div>
                     <div class="row form-group mt-3 justify-content-center">
-                        <div class="col-md-6">
+                        <div class="col-md-8">
                             <button type="submit" class="btn btn-success mr-2">Update</button>
                             <a href="{{url('/activity')}}" class="btn btn-secondary">Cancel</a>
                         </div>

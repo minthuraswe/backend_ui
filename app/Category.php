@@ -10,6 +10,22 @@ class Category extends Model
         'cat_name',
     ];
 
+    public static function boot(){
+        parent::boot();
+
+        static::created(function(){
+            flash();
+        });
+
+        static::updated(function(){
+            flash();
+        });
+
+        static::deleted(function(){
+            flash();
+        });
+    }
+    
     public function posts(){
         return $this->hasMany('App\Post');
     }

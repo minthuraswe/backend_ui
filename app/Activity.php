@@ -10,11 +10,32 @@ class Activity extends Model
         'cat_id', 'photo_id', 'act_name', 'act_memory',
     ];
 
-    public function photo(){
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function () {
+            flash();
+        });
+
+        static::updated(function () {
+            flash();
+        });
+
+        static::deleted(function () {
+            flash();
+        });
+
+        searchdata();
+    }
+
+    public function photo()
+    {
         return $this->hasOne('App\Phototitle');
     }
 
-    public function category(){
+    public function category()
+    {
         return $this->belongsTo('App\Category');
     }
 }

@@ -1,4 +1,4 @@
-@extends('dashboard')
+@extends('layouts.master')
 @section('content')
 <div class="container">
     <div class="row p-4 mt-2">
@@ -8,7 +8,7 @@
                     <h2>Creating Activity</h2>
                 </div>
                 <div class="ml-auto">
-                    <a href="{{url('/activity')}}" class="btn btn-primary mb-3 p-2">Click Here To Go Back</a>
+                    <a href="{{url('/activity')}}" class="btn btn-primary mb-3 p-2">Back</a>
                 </div>
             </div>
             <div class="card">
@@ -69,7 +69,7 @@
                         </div>
                     </div>
                     <div class="form-group row mt-3">
-                        <label for="text" class="col-md-2 col-form-label text-md-right">{{ __('Memory') }}</label>
+                        <label for="text" class="col-md-2 col-form-label text-md-right">{{ __('Image') }}</label>
                         <div class="col-md-8">
                             <input type="file" class="form-control" name="memory[]" multiple>
                             @if($errors->has('memory'))

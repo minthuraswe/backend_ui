@@ -5,6 +5,10 @@ a:hover {
 }
 
 ul>a>li:hover {
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
     background-color: #06192F;
     color: #faf6f7;
 }
@@ -107,4 +111,8 @@ a,
 
 .card-title {
     color: #faf6f7a6;
+}
+
+.badge {
+    font-size: 80%!important;
 }

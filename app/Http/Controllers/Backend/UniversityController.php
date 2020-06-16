@@ -15,7 +15,7 @@ class UniversityController extends Controller
      */
     public function index()
     {
-        $uni = University::paginate(6);
+        $uni = University::paginate(9);
         return view('university.index',compact('uni'));
     }
 
@@ -26,7 +26,7 @@ class UniversityController extends Controller
      */
     public function create()
     {
-        return view('university.create');
+        //
     }
 
     /**
@@ -40,12 +40,23 @@ class UniversityController extends Controller
         $validateData = $request->validate([
             'name' => 'required',
         ]);
-
-        University::create([
-            'uni_name' => request('name'),
-        ]);
-        flash();
+        $check = request('name'); 
+        //checking if value is integer or not
+        if(is_numeric($check)){
+            checkNumeric();
+            return back();
+        }
+        //checking if vlaues exists or not
+        $database = University::where('uni_name', '=', $check);
+        if($database->exists()){
+            checkExists($check);
+            return redirect('university');
+        }else{
+            University::create([
+                'uni_name' => request('name'),
+            ]);
         return redirect('university');
+        }
     }
 
     /**
@@ -81,11 +92,22 @@ class UniversityController extends Controller
     public function update(Request $request, $id)
     {
         $uni = University::find($id);
-        $uni->uni_name = $request->name;
-
-        $uni->save();
-        flash();
-        return redirect('/university');
+        $check = request('name'); 
+        //checking if value is integer or not
+        if(is_numeric($check)){
+            checkNumeric();
+            return back();
+        }
+        //checking if vlaues exists or not
+        $database = University::where('uni_name', '=', $check);
+        if($database->exists()){
+            checkExists($check);
+            return back();
+        }else{
+            $uni->uni_name = $request->name;
+            $uni->save();
+            return redirect('university');
+        }
     }
 
     /**
@@ -97,7 +119,6 @@ class UniversityController extends Controller
     public function destroy($id)
     {
         $uni = University::find($id)->delete();
-        flash();
-        return redirect('/university');
+        return redirect('university');
     }
 }

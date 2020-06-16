@@ -16,7 +16,7 @@ class ResponsibleController extends Controller
      */
     public function index()
     {
-        $res = Responsible::paginate(6);
+        $res = Responsible::paginate(9);
         return view('responsible.index',compact('res'));
     }
 
@@ -27,7 +27,7 @@ class ResponsibleController extends Controller
      */
     public function create()
     {
-        return view('responsible.create');
+       //
     }
 
     /**
@@ -42,11 +42,25 @@ class ResponsibleController extends Controller
             'name' => 'required',
         ]);
 
-        Responsible::create([
-            'res_name' => request('name'),
-        ]);
-        flash();
-        return redirect('responsible');
+        $check = request('name'); 
+        //checking if value is integer or not
+        if(is_numeric($check)){
+            checkNumeric();
+            return back();
+        }
+        //checking if vlaues exists or not
+        $database = Responsible::where('res_name', '=', $check);
+        if($database->exists()){
+            checkExists($check);
+            return back();
+    
+        }else{
+            Responsible::create([
+                'res_name' => request('name'),
+            ]);
+            return redirect('responsible');
+        }
+
     }
 
     /**
@@ -66,10 +80,9 @@ class ResponsibleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Responsible $responsible)
     {
-        $res = Responsible::find($id);
-        return view('responsible.edit',compact('res'));
+        return view('responsible.edit',compact('responsible'));
     }
 
     /**
@@ -82,11 +95,22 @@ class ResponsibleController extends Controller
     public function update(Request $request, $id)
     {
         $res = Responsible::find($id);
-        $res->res_name = $request->name;
-
-        $res->save();
-        flash();
-        return redirect('responsible');
+        $check = request('name'); 
+        //checking if value is integer or not
+        if(is_numeric($check)){
+            checkNumeric();
+            return back();
+        }
+        //checking if vlaues exists or not
+        $database = Responsible::where('res_name', '=', $check);
+        if($database->exists()){
+            checkExists($check);
+            return back();
+        }else{
+            $res->res_name = $request->name;
+            $res->save();
+            return redirect('responsible');
+        }
     }
 
     /**
@@ -95,10 +119,9 @@ class ResponsibleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Responsible $responsible)
     {
-        $res = Responsible::find($id)->delete();
-        flash();
+        Responsible::find($responsible->id)->delete();
         return redirect('responsible');
     }
 }

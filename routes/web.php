@@ -16,8 +16,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('dashboard');
 
 Route::group(['namespace'=>'Backend', 'middleware' => 'auth'], function(){
     Route::resource('/responsible', 'ResponsibleController');
@@ -27,5 +26,9 @@ Route::group(['namespace'=>'Backend', 'middleware' => 'auth'], function(){
     Route::resource('/category', 'CategoryController');
     Route::resource('/post', 'PostController');
     Route::resource('/activity', 'ActivityController');
-    Route::get('/search', 'MemberController@search');
+    Route::get('/search-member', 'SearchController@searchMember');
+    Route::get('/search-activity', 'SearchController@searchActivity');
+    Route::get('/search-post', 'SearchController@searchPost');
+    Route::get('/search-category', 'SearchController@searchCategory');
+    Route::get('/search-photo', 'SearchController@searchPhoto');
 });

@@ -15,7 +15,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $cat = Category::paginate(5);
+        $cat = Category::paginate(9);
         return view('category.index', compact('cat'));
     }
 
@@ -41,11 +41,23 @@ class CategoryController extends Controller
             'category' => 'required',
         ]);
 
-        Category::create([
+        $check = request('category'); 
+        //checking if value is integer or not
+        if(is_numeric($check)){
+            checkNumeric();
+            return back();
+        }
+        //checking if vlaues exists or not
+        $database = Category::where('cat_name', '=', $check);
+        if($database->exists()){
+            checkExists($check);
+            return redirect('category');
+        }else{
+            Category::create([
             'cat_name' => request('category'),
-        ]);
-        flash();
-        return redirect('category');
+            ]);
+            return redirect('category');
+        }
     }
 
     /**
@@ -81,11 +93,22 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         $cat = Category::find($id);
-
-        $cat->cat_name = $request->name;
-        $cat->save();
-        flash();
-        return redirect('category');
+        $check = request('name'); 
+        //checking if value is integer or not
+        if(is_numeric($check)){
+            checkNumeric();
+            return back();
+        }
+        //checking if vlaues exists or not
+        $database = Category::where('cat_name', '=', $check);
+        if($database->exists()){
+            checkExists($check);
+            return back();
+        }else{
+            $cat->cat_name = $request->name;
+            $cat->save();
+            return redirect('category');
+        }
     }
 
     /**
@@ -97,7 +120,6 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $cat = Category::find($id)->delete();
-        flash();
         return redirect('category');
     }
 }

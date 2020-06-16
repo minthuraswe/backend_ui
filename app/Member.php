@@ -11,6 +11,24 @@ class Member extends Model
         'res_id','uni_id','photo_id',
     ];
 
+    protected static function boot(){
+        parent::boot();
+
+        static::created(function(){
+            flash();
+        });
+
+        static::updated(function(){
+            flash();
+        });
+
+        static::deleted(function(){
+            flash();
+        });
+
+        searchdata();
+    }
+
     public function responsible(){
         return $this->hasOne('App\Responsible');
     }

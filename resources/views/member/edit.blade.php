@@ -1,4 +1,4 @@
-@extends('dashboard')
+@extends('layouts.master')
 @section('content')
 <div class="container">
     <div class="row p-4 mt-2">
@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <div class="form-group row mt-3">
-                        <label for="email" class="col-md-2 col-form-label text-md-right">{{ __('Positon') }}</label>
+                        <label for="email" class="col-md-2 col-form-label text-md-right">{{ __('Position') }}</label>
                         <div class="col-md-8">
                             <select name="res_id" id="" class="form-control" required>
                                 <option value="">Select Position</option>
@@ -94,8 +94,8 @@
                     <div class="form-group row mt-3">
                         <label for="address" class="col-md-2 col-form-label text-md-right">{{ __('Address') }}</label>
                         <div class="col-md-8">
-                            <textarea rows="3" class="form-control summernote" name="mem_address"
-                                placeholder="Member Address" required>{{strip_tags($mem->mem_address)}}
+                            <textarea name="mem_address" placeholder="Member Address" required>
+                                {!!$mem->mem_address!!}
                             </textarea>
                         </div>
                     </div>
@@ -103,9 +103,8 @@
                         <label for="description"
                             class="col-md-2 col-form-label text-md-right">{{ __('Description') }}</label>
                         <div class="col-md-8">
-                            <textarea rows="6" class="form-control summernote" name="mem_description"
-                                placeholder="Member Description" required>{{strip_tags($mem->mem_description)}}
-                                
+                            <textarea  name="mem_description" placeholder="Member Description" required>
+                                {!!$mem->mem_description!!}
                             </textarea>
                         </div>
                     </div>
@@ -126,32 +125,9 @@
 
 @push('scripts')
 <script>
-    $('#summernote').summernote({
-        placeholder: 'Member Description',
-        tabsize: 2,
-        height: 120,
-        toolbar: [
-    // ['style', ['style']],
-    ['font', ['bold', 'underline', 'clear']],
-    ['para', ['ul', 'ol']],
-    // ['table', ['table']],
-    ['insert', ['picture']],
-    ['view', ['fullscreen', 'help']]
-        ]
-    });
-
-    $('.summernote').summernote({
-        placeholder: 'Member Address',
-        tabsize: 2,
-        height: 120,
-        toolbar: [
-    // ['style', ['style']],
-    ['font', ['bold', 'underline', 'clear']],
-    ['para', ['ul', 'ol']],
-    // ['table', ['table']],
-    ['insert', ['picture']],
-    ['view', ['fullscreen', 'help']]
-        ]
-});
+    tinymce.init({
+        selector: 'textarea',
+        height: 260,
+    }); 
 </script>
 @endpush

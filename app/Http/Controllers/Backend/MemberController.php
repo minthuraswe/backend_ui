@@ -19,7 +19,7 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $mem = Member::paginate(6);
+        $mem = Member::paginate(10);
 
         return view('member.index', compact('mem'));
     }
@@ -48,7 +48,7 @@ class MemberController extends Controller
         // dd($request->except());
         $this->validateData($request);
 
-        Member::create([
+        $member = Member::create([
             'mem_name' => request('name'),
             'mem_email' => request('email'),
             'mem_phone' => request('phone'),
@@ -59,7 +59,7 @@ class MemberController extends Controller
             'res_id' => request('position'),
             'uni_id' => request('university'),
         ]);
-        flash();
+
         return redirect('member');
     }
 
@@ -106,7 +106,6 @@ class MemberController extends Controller
         $mem->fill($request->except('_token'));
 
         $mem->save();
-        flash();
         return redirect('member');
     }
 
@@ -119,7 +118,6 @@ class MemberController extends Controller
     public function destroy($id)
     {
         $mem = Member::find($id)->delete();
-        flash();
         return redirect('member');
     }
 
@@ -138,12 +136,4 @@ class MemberController extends Controller
         ]);
     }
 
-    public function search()
-    {
-        $searchdata = request('search');
-        $search = Member::where('mem_name', 'like', '%'.$searchdata.'%')->paginate();
-        $search_count = count($search);
-        
-        return view('member.search', compact('search','search_count','searchdata'));
-    }
 }
