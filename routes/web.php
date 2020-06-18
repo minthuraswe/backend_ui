@@ -14,10 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/home', 'HomeController@index')->name('home');
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('dashboard');
 
+//Backend Route List
 Route::group(['namespace'=>'Backend', 'middleware' => 'auth'], function(){
     Route::resource('/responsible', 'ResponsibleController');
     Route::resource('/university', 'UniversityController');
@@ -31,4 +31,9 @@ Route::group(['namespace'=>'Backend', 'middleware' => 'auth'], function(){
     Route::get('/search-post', 'SearchController@searchPost');
     Route::get('/search-category', 'SearchController@searchCategory');
     Route::get('/search-photo', 'SearchController@searchPhoto');
+});
+
+//Frontend Route list
+Route::group(['namespace'=>'Frontend'], function(){
+    Route::get('/index', 'IndexController@index');
 });

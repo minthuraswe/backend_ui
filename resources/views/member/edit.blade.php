@@ -103,7 +103,7 @@
                         <label for="description"
                             class="col-md-2 col-form-label text-md-right">{{ __('Description') }}</label>
                         <div class="col-md-8">
-                            <textarea  name="mem_description" placeholder="Member Description" required>
+                            <textarea name="mem_description" placeholder="Member Description" required>
                                 {!!$mem->mem_description!!}
                             </textarea>
                         </div>

@@ -38,11 +38,11 @@ class PhototitleController extends Controller
     public function store(Request $request)
     {
         $this->validateData($request);  //validation form
-        
+
         //image uploading and creating path
         $extension = $request->photo;
         $filename = uniqid() . '.' . $extension->getClientOriginalExtension();
-        $path = imagePath(); 
+        $path = imagePath();
         $extension->move($path, $filename);
 
         Phototitle::create([
@@ -52,7 +52,7 @@ class PhototitleController extends Controller
         ]);
 
         return redirect('photo');
-        
+
     }
 
     /**

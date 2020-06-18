@@ -20,7 +20,6 @@
     
     <!-- style of css -->
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
-
 </head>
 
 <body style="background-color:rgba(188,188,188,0.2 );">

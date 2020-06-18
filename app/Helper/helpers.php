@@ -19,13 +19,12 @@ function checkExists($value){
 }
 
 function checkNumeric(){
-    session()->flash('errorposition', 'The position can not be integer. Try again!!');
-    session()->flash('errorcategory', 'The category can not be integer. Try again!!');
-    session()->flash('erroruniversity', 'The university can not be integer. Try again!!');
+    session()->flash('errorposition', 'The position can not be number. Try again!!');
+    session()->flash('errorcategory', 'The category can not be number. Try again!!');
+    session()->flash('erroruniversity', 'The university can not be number. Try again!!');
 }
 
 function imagePath() 
 {
     return public_path('uploads/');
 }
-

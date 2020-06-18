@@ -1,0 +1,152 @@
+* {
+    font-family: sans-serif;
+    /* for all pages */
+}
+
+
+/* own class */
+
+h2 {
+    letter-spacing: -1px;
+    word-spacing: 2px;
+}
+
+.main-bg {
+    background-color: #091E40;
+}
+
+.first-bg {
+    background-color: #e1e7ee;
+}
+
+.logo-width {
+    width: 10%;
+}
+
+.navbar-mr-bb {
+    margin-right: 1.5rem;
+}
+
+.divider-bg {
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-image: url('/frontend/images/sample.JPG');
+}
+
+.divider-bg-fixed {
+    background-attachment: fixed !important;
+    color: #faf6f7;
+}
+
+.section-padding-100 {
+    padding-top: 150px;
+    padding-bottom: 150px;
+}
+
+.pale-bg {
+    background-color: rgba(9, 30, 64, 0.7);
+}
+
+.aim {
+    color: #f38e18;
+}
+
+.heading {
+    color: #faf6f7;
+}
+
+.body-text {
+    color: rgba(250, 246, 247, .8);
+    font-size: 1.2rem;
+}
+
+.card-shadow {
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.1);
+}
+
+.max-height {
+    max-height: 15rem;
+}
+
+.my-btn {
+    border-color: #faf6f7;
+    background-color: #091E40;
+    color: #faf6f7;
+}
+
+.my-btn:hover {
+    color: #f38e18;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
+.uni-border {
+    border: 1px solid rgba(250, 246, 247, .15);
+    border-radius: .25rem;
+}
+
+.border-sm-none {
+    border-right: 1px solid #8d8c8cb2;
+}
+
+.footer-bg {
+    background-color: #06192F;
+}
+
+.footer-text {
+    font-size: 1.2rem;
+    color: #faf6f7;
+}
+
+
+/* customize class */
+
+.nav-link {
+    font-size: 1.2rem;
+    color: #faf6f7;
+}
+
+.nav-link:hover {
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    color: #f38e18;
+}
+
+.navbar-toggler {
+    border: none!important;
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(250,246,247)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E")!important;
+}
+
+button:focus {
+    outline: none!important;
+}
+
+.btn-outline-dark {
+    border-color: #faf6f7!important;
+    color: #faf6f7!important;
+}
+
+.btn-outline-dark:hover {
+    background-color: #091E40!important;
+    color: #f38e18!important;
+    -webkit-transition: all 0.2s linear;
+    -moz-transition: all 0.2s linear;
+    -o-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+}
+
+.card-img-top {
+    border-top-left-radius: .25rem!important;
+    border-top-right-radius: .25rem!important;
+}
