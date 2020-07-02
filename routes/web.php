@@ -19,10 +19,7 @@ Auth::routes();
 
 //Backend Route List
 Route::group(['namespace'=>'Backend', 'middleware' => 'auth'], function(){
-    Route::resource('/responsible', 'ResponsibleController');
-    Route::resource('/university', 'UniversityController');
     Route::resource('/member', 'MemberController');
-    Route::resource('/photo', 'PhototitleController');
     Route::resource('/category', 'CategoryController');
     Route::resource('/post', 'PostController');
     Route::resource('/activity', 'ActivityController');
@@ -30,10 +27,14 @@ Route::group(['namespace'=>'Backend', 'middleware' => 'auth'], function(){
     Route::get('/search-activity', 'SearchController@searchActivity');
     Route::get('/search-post', 'SearchController@searchPost');
     Route::get('/search-category', 'SearchController@searchCategory');
-    Route::get('/search-photo', 'SearchController@searchPhoto');
 });
 
 //Frontend Route list
 Route::group(['namespace'=>'Frontend'], function(){
     Route::get('/index', 'IndexController@index');
+    Route::get('/news', 'NewsController@index');
+    Route::get('/news/{id}-{post_title}', 'PostController@show');
+    Route::get('/news/category/{id}-{cat_name}', 'PostController@categoryPost');
+    Route::get('/activities', 'ActivityController@index');
+    Route::get('/activities/{id}-{cat_name}', 'ActivityController@show');
 });

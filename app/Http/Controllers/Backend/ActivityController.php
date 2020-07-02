@@ -5,7 +5,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Activity;
 use App\Category;
-use App\Phototitle;
 
 
 class ActivityController extends Controller
@@ -29,8 +28,7 @@ class ActivityController extends Controller
     public function create()
     {
         $cat = Category::orderBy('cat_name')->get();
-        $photo = Phototitle::orderBy('photo_name')->get();
-        return view('activity.create', compact('cat', 'photo'));
+        return view('activity.create', compact('cat'));
     }
 
     /**
@@ -43,20 +41,20 @@ class ActivityController extends Controller
     {
         $this->validateData($request);
 
+        //getting images of activity
         $activity_image = request('memory');
         $ary = array();
 
         foreach ($activity_image as $data) {
             $filename = uniqid() . '.' . $data->getClientOriginalExtension();
             array_push($ary, $filename);
-            $path = public_path() . '/uploads/';
+            $path = imagePath();
             $data->move($path, $filename);
         }
 
         Activity::create([
             'act_name' => request('name'),
             'cat_id' => request('category'),
-            'photo_id' => request('photo'),
             'act_memory' => serialize($ary),
         ]);
 
@@ -73,8 +71,7 @@ class ActivityController extends Controller
     {
         $act = Activity::find($id);
         $cat = Category::all();
-        $photo = Phototitle::all();
-        return view('activity.show', compact('act', 'cat', 'photo'));
+        return view('activity.show', compact('act', 'cat'));
     }
 
     /**
@@ -88,8 +85,7 @@ class ActivityController extends Controller
         $act = Activity::find($id);
         // dd($act);
         $cat = Category::all();
-        $photo = Phototitle::all();
-        return view('activity.edit', compact('act', 'cat', 'photo'));
+        return view('activity.edit', compact('act', 'cat'));
     }
 
     /**
@@ -101,6 +97,7 @@ class ActivityController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //getting images of activity
         $activity_image = request('memory');
         $ary = array();
 
@@ -112,10 +109,8 @@ class ActivityController extends Controller
         }
 
         $act = Activity::find($id);
-
         $act->act_name = $request->act_name;
         $act->cat_id = $request->cat_id;
-        $act->photo_id = $request->photo_id;
         $act->act_memory = serialize($ary);
 
         $act->save();
@@ -139,7 +134,6 @@ class ActivityController extends Controller
         $validateData = $request->validate([
             'name' => 'required',
             'category' => 'required',
-            'photo' => 'required',
             'memory' => 'required',
             'memory.*' => 'required|mimes:jpeg, jpg, png',
         ]);

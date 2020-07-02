@@ -11,7 +11,6 @@ function searchdata()
     session()->flash('search_activity', 'No activity found!!');
     session()->flash('search_post', 'No post found!!');
     session()->flash('search_category', 'No category found!!');
-    session()->flash('search_photo', 'No photo found!!');
 }
 
 function checkExists($value){
@@ -19,9 +18,7 @@ function checkExists($value){
 }
 
 function checkNumeric(){
-    session()->flash('errorposition', 'The position can not be number. Try again!!');
     session()->flash('errorcategory', 'The category can not be number. Try again!!');
-    session()->flash('erroruniversity', 'The university can not be number. Try again!!');
 }
 
 function imagePath() 

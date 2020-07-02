@@ -26,7 +26,6 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Photo</th>
                         <th scope="col">Category</th>
                         <th scope="col">Memory</th>
                         <th scope="col">Last updated</th>
@@ -38,10 +37,6 @@
                     <tr>
                         <td>{{$item->id}}</td>
                         <td>{{$item->act_name}}</td>
-                        <td>
-                            <?php $photo = App\Phototitle::find($item->photo_id) ?>
-                            {{$photo->photo_name}}
-                        </td>
                         <td>
                             <?php $cat = App\Category::find($item->cat_id) ?>
                             {{$cat->cat_name}}

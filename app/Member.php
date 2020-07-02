@@ -8,7 +8,7 @@ class Member extends Model
 {
     protected $fillable = [
         'mem_name','mem_email','mem_age','mem_phone','mem_address','mem_description',
-        'res_id','uni_id','photo_id',
+        'mem_position','mem_university','mem_photo',
     ];
 
     protected static function boot(){
@@ -29,15 +29,4 @@ class Member extends Model
         searchdata();
     }
 
-    public function responsible(){
-        return $this->hasOne('App\Responsible');
-    }
-    
-    public function university(){
-        return $this->belongsTo('App\University');
-    }
-
-    public function phototitle(){
-        return $this->hasOne('App\Phototitle');
-    }
 }

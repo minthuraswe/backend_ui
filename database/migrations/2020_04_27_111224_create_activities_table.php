@@ -15,16 +15,14 @@ class CreateActivitiesTable extends Migration
     {
         Schema::create('activities', function (Blueprint $table) {
             $table->bigIncrements('id');
-       
             $table->unsignedBigInteger('cat_id');
-            $table->unsignedBigInteger('photo_id')->nullbale();
             
             $table->string('act_name');
             $table->text('act_memory');
+            
             $table->timestamps();
-
             $table->foreign('cat_id')->references('id')->on('categories');
-            $table->foreign('photo_id')->references('id')->on('phototitles');
+
         });
     }
 

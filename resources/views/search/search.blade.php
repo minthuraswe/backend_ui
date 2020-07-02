@@ -14,8 +14,6 @@
                     <a href="/post" class="text-info">Back to post</a>
                     @elseif(request()->is('search-activity'))
                     <a href="/activity" class="text-info">Back to activity</a>
-                    @elseif(request()->is('search-photo'))
-                    <a href="/photo" class="text-info">Back to photo</a>
                     @endif
                 </p>
             </div>

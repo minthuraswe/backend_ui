@@ -15,21 +15,16 @@ class CreateMembersTable extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('photo_id')->nullable();
-            $table->unsignedBigInteger('res_id');
-            $table->unsignedBigInteger('uni_id');
-          
             $table->string('mem_name');
             $table->string('mem_email');
             $table->string('mem_age');
             $table->string('mem_phone');
+            $table->text('mem_photo');
             $table->string('mem_address');
+            $table->string('mem_position');
+            $table->string('mem_university');
             $table->longtext('mem_description'); 
             $table->timestamps();
-
-            $table->foreign('photo_id')->references('id')->on('phototitles');
-            $table->foreign('res_id')->references('id')->on('responsibles');
-            $table->foreign('uni_id')->references('id')->on('universities');
         });
     }
 

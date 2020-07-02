@@ -30,7 +30,6 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Title</th>
-                        <th scope="col">Photo</th>
                         <th scope="col">Category</th>
                         <th scope="col">Description</th>
                         <th scope="col">Last updated</th>
@@ -42,10 +41,6 @@
                     <tr>
                         <td>{{$item->id}}</td>
                         <td>{{$item->post_title}}</td>
-                        <td>
-                            <?php $photo = App\Phototitle::find($item->photo_id) ?>
-                            {{$photo->photo_name}}
-                        </td>
                         <td>
                             <?php $cat = App\Category::find($item->cat_id) ?>
                             <span class="badge badge-info px-2 py-1">{{$cat->cat_name}}</span>
@@ -96,7 +91,6 @@
             @elseif(session('search_post'))
             <div>
                 <p>{{session('search_post')}}  <a href="/post" class="text-info pl-2"> Back to post</a></p>
-                
             </div>
 
             @endif

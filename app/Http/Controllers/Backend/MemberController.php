@@ -5,9 +5,6 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Member;
-use App\Phototitle;
-use App\Responsible;
-use App\University;
 
 
 class MemberController extends Controller
@@ -31,10 +28,7 @@ class MemberController extends Controller
      */
     public function create()
     {
-        $res = Responsible::orderBy('res_name')->get();
-        $uni = University::orderBy('uni_name')->get();
-        $photo = Phototitle::orderBy('photo_name')->get();
-        return view('member.create', compact('uni', 'res', 'photo'));
+        return view('member.create');
     }
 
     /**
@@ -48,6 +42,11 @@ class MemberController extends Controller
         // dd($request->except());
         $this->validateData($request);
 
+        $get_image = request('photo');
+        $filename = uniqid() . '.' . $get_image->getClientOriginalExtension();
+        $path = imagePath();
+        $get_image->move($path, $filename);
+
         $member = Member::create([
             'mem_name' => request('name'),
             'mem_email' => request('email'),
@@ -55,9 +54,9 @@ class MemberController extends Controller
             'mem_age' => request('age'),
             'mem_address' => request('address'),
             'mem_description' => request('description'),
-            'photo_id' => request('photo'),
-            'res_id' => request('position'),
-            'uni_id' => request('university'),
+            'mem_photo' => $filename,
+            'mem_position' => request('position'),
+            'mem_university' => request('university'),
         ]);
 
         return redirect('member');
@@ -72,10 +71,7 @@ class MemberController extends Controller
     public function show($id)
     {
         $mem = Member::find($id);
-        $uni = University::all();
-        $res = Responsible::all();
-        $photo = Phototitle::all();
-        return view('member.show', compact('mem', 'uni', 'photo', 'res'));
+        return view('member.show', compact('mem'));
     }
 
     /**
@@ -87,10 +83,7 @@ class MemberController extends Controller
     public function edit($id)
     {
         $mem = Member::find($id);
-        $uni = University::all();
-        $res = Responsible::all();
-        $photo = Phototitle::all();
-        return view('member.edit', compact('mem', 'uni', 'res', 'photo'));
+        return view('member.edit', compact('mem'));
     }
 
     /**
@@ -102,8 +95,22 @@ class MemberController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $get_image = request('photo');
+
+        $filename = uniqid() . '.' . $get_image->getClientOriginalExtension();
+        $path = imagePath();
+        $get_image->move($path, $filename);
+
         $mem = Member::find($id);
-        $mem->fill($request->except('_token'));
+        $mem->mem_name = request('name');
+        $mem->mem_email = request('email');
+        $mem->mem_phone = request('phone');
+        $mem->mem_age = request('age');
+        $mem->mem_address = request('address');
+        $mem->mem_description = request('description');
+        $mem->mem_photo = $filename;
+        $mem->mem_position = request('position');
+        $mem->mem_university = request('university');
 
         $mem->save();
         return redirect('member');

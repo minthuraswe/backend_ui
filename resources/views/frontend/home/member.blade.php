@@ -5,8 +5,7 @@
             @foreach ($member as $get)
             <div class="col-md-4 mb-2">
                 <div class="card card-shadow">
-                    <?php $getter = App\Phototitle::find($get->photo_id) ?>
-                    <img src="{{asset('/uploads/'. $getter->image)}}" class="card-img-top max-height" alt="... ">
+                    <img src="{{asset('/uploads/'. $get->mem_photo)}}" class="card-img-top max-height" alt="..." title="{{$get->mem_name}}">
                     <div class="card-body">
                         <h5 class="card-title">{{$get->mem_name}}</h5>
                         <?php $striptags = strip_tags($get->mem_description) ?>

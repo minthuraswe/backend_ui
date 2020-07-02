@@ -27,28 +27,6 @@
                         </div>
                     </div>
                     <div class="form-group row mt-3">
-                        <label for="email" class="col-md-2 col-form-label text-md-right">{{ __('Photo') }}</label>
-                        <div class="col-md-8">
-                            <select name="photo" id="" class="form-control">
-                                <option value=""> Select Photo</option>
-                                @foreach ($photo as $item)
-                                @if($item->photo_for_what == 'Activity')
-                                @if(Request::old('photo') == $item->id)
-                                <option value="{{$item->id}}" selected>{{$item->photo_name}}</option>
-                                @else
-                                <option value="{{$item->id}}">{{$item->photo_name}}</option>
-                                @endif
-                                @endif
-                                @endforeach
-                            </select>
-                            @if($errors->has('photo'))
-                            <span class="text-danger font-weight-bold">
-                                {{$errors->first('photo')}}
-                            </span>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="form-group row mt-3">
                         <label for="email" class="col-md-2 col-form-label text-md-right">{{ __('Category') }}</label>
                         <div class="col-md-8">
                             <select name="category" id="" class="form-control">

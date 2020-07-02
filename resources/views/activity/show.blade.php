@@ -21,11 +21,7 @@
                         Category = <span class="badge badge-info px-2 py-1 mb-1">{{$cat->cat_name}}</span>
                     </li>
                     <li class="px-3 border-bottom py-2">
-                        <?php $photo = App\Phototitle::find($act->photo_id); ?>
-                        Photo Heading = <img src="{{asset('/uploads/'. $photo->image)}}" width="auto" height="50px" title="{{$photo->image}}">
-                    </li>
-                    <li class="px-3 border-bottom py-2">
-                        Image = 
+                        Activities = 
                         @foreach(unserialize($act->act_memory) as $data)
                         <img src="{{asset('/uploads/'. $data)}}" width="50px" height="50px" class="rounded" title="{{$data}}">
                         @endforeach

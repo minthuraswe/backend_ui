@@ -1,6 +1,6 @@
 <div class="sidebar position-fixed" style="width: 227.5px;">
-    <li class="border-bottom list-unstyled">
-        <h5 class="border-0  pt-3 pb-2 pl-3 clcc">CLCC</h5>
+    <li class="border-bottom list-unstyled text-center">
+        <h5 class="border-0  pt-3 pb-2 clcc">CLCC</h5>
     </li>
     <ul class="list-unstyled">
         <a href="/home">
@@ -114,76 +114,8 @@
             </li>
             @endif
         </a>
-        <a href="/photo">
-            @if(request()->is('photo*') || request()->is('search-photo'))
-            <li class="p-3 active">
-                <svg class="bi bi-image-fill pb-1" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M.002 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-12a2 2 0 0 1-2-2V3zm1 9l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71a.5.5 0 0 1 .577-.094L15.002 9.5V13a1 1 0 0 1-1 1h-12a1 1 0 0 1-1-1v-1zm5-6.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
-                </svg> Photo
-                <span class="badge badge-light float-right">{{$count_photo}}</span>
-            </li>
-            @else
-            <li class="p-3">
-                <svg class="bi bi-card-image pb-1" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M14.5 3h-13a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h13a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z" />
-                    <path
-                        d="M10.648 7.646a.5.5 0 0 1 .577-.093L15.002 9.5V13h-14v-1l2.646-2.354a.5.5 0 0 1 .63-.062l2.66 1.773 3.71-3.71z" />
-                    <path fill-rule="evenodd" d="M4.502 7a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z" />
-                </svg> Photo
-                <span class="badge badge-light float-right">{{$count_photo}}</span>
-            </li>
-            @endif
-        </a>
-        <a href="/responsible">
-            @if(request()->is('responsible*'))
-            <li class="p-3 active">
-                <svg class="bi bi-person-fill pb-1" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z" />
-                </svg> Position
-                <span class="badge badge-light float-right">{{$count_res}}</span>
-            </li>
-            @else
-            <li class="p-3">
-                <svg class="bi bi-person pb-1" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M13 14s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002.002zM3.022 13h9.956a.274.274 0 0 0 .014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 0 0 .022.004zm9.974.056v-.002.002zM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                </svg> Position
-                <span class="badge badge-light float-right">{{$count_res}}</span>
-            </li>
-            @endif
-        </a>
-        <a href="/university">
-            @if(request()->is('university*'))
-            <li class="p-3 active">
-                <svg class="bi bi-award-fill pb-1" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path
-                        d="M8 0l1.669.864 1.858.282.842 1.68 1.337 1.32L13.4 6l.306 1.854-1.337 1.32-.842 1.68-1.858.282L8 12l-1.669-.864-1.858-.282-.842-1.68-1.337-1.32L2.6 6l-.306-1.854 1.337-1.32.842-1.68L6.331.864 8 0z" />
-                    <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
-                </svg> University
-                <span class="badge badge-light float-right">{{$count_uni}}</span>
-            </li>
-            @else
-            <li class="p-3">
-                <svg class="bi bi-award pb-1" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M9.669.864L8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193l-1.51-.229L8 1.126l-1.355.702-1.51.229-.684 1.365-1.086 1.072L3.614 6l-.25 1.506 1.087 1.072.684 1.365 1.51.229L8 10.874l1.356-.702 1.509-.229.684-1.365 1.086-1.072L12.387 6l.248-1.506-1.086-1.072-.684-1.365z" />
-                    <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
-                </svg> University
-                <span class="badge badge-light float-right">{{$count_uni}}</span>
-            </li>
-            @endif
-        </a>
-        <li class="p-3 border-top clcc" style="margin-top:9rem;">
-            <span style="font-size:14px;">Copyright &copy; 2020 clcc.</span>
+        <li class="p-3 border-top clcc" style="margin-top:20rem;">
+            <div style="font-size:14px;">Copyright &copy; 2020 clcc.</div>
         </li>
 
     </ul>

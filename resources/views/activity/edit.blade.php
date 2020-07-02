@@ -17,23 +17,6 @@
                         </div>
                     </div>
                     <div class="form-group row mt-3">
-                        <label for="email" class="col-md-2 col-form-label text-md-right">{{ __('Photo') }}</label>
-                        <div class="col-md-8">
-                            <select name="photo_id" id="" class="form-control" required>
-                                <option value=""> Select Photo</option>
-                                @foreach ($photo as $item)
-                                @if($item->photo_for_what == 'Activity')
-                                @if($item->id == $act->photo_id)
-                                <option value="{{$item->id}}" selected="selected">{{$item->photo_name}}</option>
-                                @else
-                                <option value="{{$item->id}}">{{$item->photo_name}}</option>
-                                @endif
-                                @endif
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group row mt-3">
                         <label for="email" class="col-md-2 col-form-label text-md-right">{{ __('Category') }}</label>
                         <div class="col-md-8">
                             <select name="cat_id" id="" class="form-control" required>
@@ -54,7 +37,7 @@
                             <input type="file" multiple class="form-control" id="validatedCustomFile"
                                 name="memory[]" required>
                             @foreach(unserialize($act->act_memory) as $data)
-                            <img src="{{asset('/uploads/'. $data)}}" width="40px" height="40px" class="rounded mt-3"
+                            <img src="{{asset('/uploads/'. $data)}}" width="40px" height="40px" class="rounded mt-2"
                                 title="{{$data}}">
                             @endforeach
                         </div>

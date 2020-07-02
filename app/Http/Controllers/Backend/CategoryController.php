@@ -48,8 +48,8 @@ class CategoryController extends Controller
             return back();
         }
         //checking if vlaues exists or not
-        $database = Category::where('cat_name', '=', $check);
-        if($database->exists()){
+        $db_category = Category::where('cat_name', '=', $check);
+        if($db_category->exists()){
             checkExists($check);
             return redirect('category');
         }else{

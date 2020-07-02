@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="card">
-                <form action="{{url('/member')}}" method="post">
+                <form action="{{url('/member')}}" method="post" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group row mt-3">
@@ -44,13 +44,11 @@
                         <div class="col-md-8">
                             <select name="university" id="" class="form-control">
                                 <option value="">Select University</option>
-                                @foreach ($uni as $item)
-                                @if(Request::old('university') == $item->id)
-                                <option value="{{$item->id}}" selected>{{$item->uni_name}}</option>
-                                @else
-                                <option value="{{$item->id}}">{{$item->uni_name}}</option>
-                                @endif
-                                @endforeach
+                                <option {{old('university') == 'Yangon University' ? 'selected' : ''}}>Yangon University</option>
+                                <option {{old('university') == 'West Yangon University' ? 'selected' : ''}}>West Yangon University</option>
+                                <option {{old('university') == 'Technological University(Hmawbi)' ? 'selected' : ''}}>Technological University(Hmawbi)</option>
+                                <option {{old('university') == 'West Yangon Technological University' ? 'selected' : ''}}>West Yangon Technological University</option>
+                                <option {{old('university') == 'Yangon University of Economics' ? 'selected' : ''}}>Yangon University of Economics</option>
                             </select>
                             @if($errors->has('university'))
                             <span class="text-danger font-weight-bold">
@@ -64,13 +62,15 @@
                         <div class="col-md-8">
                             <select name="position" class="form-control">
                                 <option value=""> Select Position</option>
-                                @foreach ($res as $data)
-                                @if(Request::old('position') == $data->id)
-                                <option value="{{$data->id}}" selected>{{$data->res_name}}</option>
-                                @else
-                                <option value="{{$data->id}}">{{$data->res_name}}</option>
-                                @endif
-                                @endforeach
+                                <option {{old('position') == 'President' ? 'selected' : ''}}>President</option>
+                                <option {{old('position') == 'Vice-President' ? 'selected' : ''}}>Vice-President</option>
+                                <option {{old('position') == 'Generally Secretary' ? 'selected' : ''}}>Generally Secretary</option>
+                                <option {{old('position') == 'Associate General Secretary' ? 'selected' : ''}}>Associate General Secretary</option>
+                                <option {{old('position') == 'Treasure-Fund Raising' ? 'selected' : ''}}>Treasure-Fund Raising</option>
+                                <option {{old('position') == 'Joint Treasure-Fund Raising' ? 'selected' : ''}}>Joint Treasure-Fund Raising</option>
+                                <option {{old('position') == 'Culture Leader' ? 'selected' : ''}}>Culture Leader</option>
+                                <option {{old('position') == 'Literature and Communication Leader' ? 'selected' : ''}}>Literature and Communication Leader</option>
+                                <option {{old('position') == 'Sport Leader' ? 'selected' : ''}}>Sport Leader</option>
                             </select>
                             @if($errors->has('position'))
                             <span class="text-danger font-weight-bold">
@@ -106,19 +106,7 @@
                     <div class="form-group row mt-3">
                         <label for="email" class="col-md-2 col-form-label text-md-right">{{ __('Photo') }}</label>
                         <div class="col-md-8">
-                            <select name="photo" id="" class="form-control">
-                                <option value=""> Select Photo</option>
-                                @foreach ($photo as $item)
-                                @if($item->photo_for_what == 'Member')
-                                @if(Request::old('photo') == $item->id)
-                                <option value="{{$item->id}}" selected>{{$item->photo_name}}</option>
-                                @else
-                                <option value="{{$item->id}}">{{$item->photo_name}}</option>
-                                @endif
-
-                                @endif
-                                @endforeach
-                            </select>
+                            <input type="file" name="photo" class="form-control">   
                             @if($errors->has('photo'))
                             <span class="text-danger font-weight-bold">
                                 {{$errors->first('photo')}}

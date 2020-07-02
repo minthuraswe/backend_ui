@@ -21,12 +21,10 @@
                         Email = {{$mem->mem_email}}
                     </li>
                     <li class="px-3 border-bottom py-2">
-                        <?php $uni = App\University::find($mem->uni_id); ?>
-                        University = <span class="badge badge-primary  mb-1 px-2 py-1">{{$uni->uni_name}}</span>
+                        University = <span class="badge badge-primary  mb-1 px-2 py-1">{{$mem->mem_university}}</span>
                     </li>
                     <li class="px-3 border-bottom py-2">
-                        <?php $res = App\Responsible::find($mem->res_id); ?>
-                        Responsible = <span class="badge badge-success  mb-1 px-2 py-1">{{$res->res_name}}</span>
+                        Responsible = <span class="badge badge-success  mb-1 px-2 py-1">{{$mem->mem_position}}</span>
                     <li class="px-3 border-bottom py-2">
                         <?php 
                             $dateOfBirth = $mem->mem_age;
@@ -39,14 +37,13 @@
                         Phone = {{$mem->mem_phone}}
                     </li>
                     <li class="px-3 border-bottom py-2">
-                        <?php $pho = App\Phototitle::find($mem->photo_id); ?>
-                        Photo = <img src="{{asset('/uploads/'. $pho->image)}}" class="rounded-circle" width="50px" height="50px" title="{{$pho->image}}">
+                        Photo = <img src="{{asset('/uploads/'. $mem->mem_photo)}}" class="rounded-circle" width="50px" height="50px" title="{{$mem->mem_photo}}">
                     </li>
                     <li class="px-3 border-bottom py-2">
                         Address = {!!($mem->mem_address)!!}
                     </li>
                     <li class="py-2 px-3">
-                        Description = <br>{!!($mem->mem_description)!!}
+                        Biography = <br>{!!($mem->mem_description)!!}
                     </li>
                 </ul>
             </div>

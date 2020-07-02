@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Str;
-use App\Category;
-use App\Phototitle;
-use App\Post;
 use Illuminate\Http\Request;
+use App\Category;
+use App\Post;
+
 
 class PostController extends Controller
 {
@@ -30,8 +29,7 @@ class PostController extends Controller
     public function create()
     {
         $cat = Category::orderBy('cat_name')->get();
-        $photo = Phototitle::orderBy('photo_name')->get();
-        return view('post.create', compact('cat', 'photo'));
+        return view('post.create', compact('cat'));
     }
 
     /**
@@ -43,11 +41,17 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $this->validateData($request);
-        // dd($truncated);
+
+        $get_image = request('photo');
+
+        $filename = uniqid() . '.' . $get_image->getClientOriginalExtension();
+        $path = imagePath();
+        $get_image->move($path, $filename);
+
 
         Post::create([
             'post_title' => request('post'),
-            'photo_id' => request('photo'),
+            'post_image' => $filename,
             'cat_id' => request('category'),
             'post_description' => request('description'),
         ]);
@@ -65,8 +69,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $cat = Category::all();
-        $photo = Phototitle::all();
-        return view('post.show', compact('post', 'cat', 'photo'));
+        return view('post.show', compact('post', 'cat'));
     }
 
     /**
@@ -79,8 +82,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $cat = Category::all();
-        $photo = Phototitle::all();
-        return view('post.edit', compact('post', 'cat', 'photo'));
+        return view('post.edit', compact('post', 'cat'));
     }
 
     /**
@@ -92,10 +94,16 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $get_image = request('photo');
+
+        $filename = uniqid() . '.' . $get_image->getClientOriginalExtension();
+        $path = imagePath();
+        $get_image->move($path, $filename);
+
         $post = Post::find($id);
         $post->post_title = request('post');
-        $post->photo_id = request('photo');
         $post->cat_id = request('category');
+        $post->post_image = $filename;
         $post->post_description = request('description');
 
         $post->save();

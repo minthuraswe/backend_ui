@@ -5,7 +5,4 @@
 @include('frontend.home.activity')
 @include('frontend.home.uni')
 @include('frontend.home.post')
-@include('frontend.home.footer')
-@section('content')
-
-@endsection
+@include('frontend.layouts.footer')

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     protected $fillable = [
-        'cat_id', 'photo_id', 'post_title', 'post_description',
+        'cat_id', 'post_image', 'post_title', 'post_description',
     ];
 
     public static function boot(){
@@ -30,9 +30,5 @@ class Post extends Model
 
     public function category(){
         return $this->belongsTo('App\Category');
-    }
-
-    public function photo(){
-        return $this->hasOne('App\Phototitle');
     }
 }

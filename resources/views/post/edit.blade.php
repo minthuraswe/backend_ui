@@ -5,7 +5,7 @@
         <div class="col-md-12">
             <h2>Editing Post</h2>
             <div class="card">
-                <form action="{{url('post/'. $post->id)}}" method="post">
+                <form action="{{url('post/'. $post->id)}}" method="post" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
                     <div class="form-group row mt-3">
@@ -18,18 +18,8 @@
                     <div class="form-group row mt-3">
                         <label for="email" class="col-md-2 col-form-label text-md-right">{{ __('Photo') }}</label>
                         <div class="col-md-8">
-                            <select name="photo" id="" class="form-control" required>
-                                <option> Select Photo</option>
-                                @foreach ($photo as $item)
-                                @if($item->photo_for_what == 'Post')
-                                @if($item->id == $post->photo_id)
-                                <option value="{{$item->id}}" selected="selected">{{$item->photo_name}}</option>
-                                @else
-                                <option value="{{$item->id}}">{{$item->photo_name}}</option>
-                                @endif
-                                @endif
-                                @endforeach
-                            </select>
+                            <input type="file" name="photo" id="" class="form-control" required>
+                            <img src="{{asset('/uploads/'. $post->post_image)}}" class="rounded mt-2" width="auto" height="50px" title="{{$post->post_image}}">
                         </div>
                     </div>
                     <div class="form-group row mt-3">

@@ -8,7 +8,6 @@ use App\Category;
 use App\Member;
 use App\Activity;
 use App\Post;
-use App\Phototitle;
 
 class SearchController extends Controller
 {
@@ -66,18 +65,4 @@ class SearchController extends Controller
 
     }
 
-    public function searchPhoto()
-    {
-        $searchdata = request('search');
-        if($searchdata != ""){
-            $search = Phototitle::where('photo_name', 'like', '%'.$searchdata.'%')
-                    ->orwhere('photo_for_what', 'like', '%' . $searchdata . '%')->paginate();
-            $search_count = count($search);
-            
-            return view('photo.search', compact('search','search_count','searchdata'));
-        }else{
-            return view('photo.search');
-        }
-
-    }
 }

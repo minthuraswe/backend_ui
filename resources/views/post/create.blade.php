@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="card">
-                <form action="{{url('/post')}}" method="post">
+                <form action="{{url('/post')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group row mt-3">
                         <label for="name" class="col-md-2 col-form-label text-md-right">{{ __('Post Title') }}</label>
@@ -29,18 +29,7 @@
                     <div class="form-group row mt-3">
                         <label for="email" class="col-md-2 col-form-label text-md-right">{{ __('Photo') }}</label>
                         <div class="col-md-8">
-                            <select name="photo" id="slick" class="form-control">
-                                <option value=""> Select Photo</option>
-                                @foreach ($photo as $item)
-                                @if($item->photo_for_what == 'Post')
-                                @if(Request::old('photo') == $item->id)
-                                <option value="{{$item->id}}" selected>{{$item->photo_name}}</option>
-                                @else
-                                <option data-imagesrc="{{asset('/uploads/' . $item->image)}}"  value="{{$item->id}}">{{$item->photo_name}}</option>
-                                @endif
-                                @endif
-                                @endforeach
-                            </select>
+                           <input type="file" name="photo" id="" class="form-control">
                             @if($errors->has('photo'))
                             <span class="text-danger font-weight-bold">
                                 {{$errors->first('photo')}}

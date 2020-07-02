@@ -21,8 +21,7 @@
                         Category = <span class="badge badge-info px-2 py-1 mb-1">{{$cat->cat_name}}</span>
                     </li>
                     <li class="px-3 border-bottom py-2">
-                        <?php $photo = App\Phototitle::find($post->photo_id); ?>
-                        Photo = <img src="{{asset('/uploads/'. $photo->image)}}" class="border" width="auto" height="50px" title="{{$photo->image}}">
+                        Photo = <img src="{{asset('/uploads/'. $post->post_image)}}" class="border" width="auto" height="50px" title="{{$post->post_image}}">
                     </li>
                     <li class="px-3 border-bottom py-2 ">
                         Description =<br> {!!$post->post_description!!}

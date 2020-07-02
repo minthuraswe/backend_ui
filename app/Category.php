@@ -9,6 +9,7 @@ class Category extends Model
     protected $fillable = [
         'cat_name',
     ];
+    
 
     public static function boot(){
         parent::boot();

@@ -31,7 +31,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Responsible</th>
+                        <th scope="col">Position</th>
                         <th scope="col">Last updated</th>
                         <th scope="col">Action</th>
                     </tr>
@@ -43,8 +43,7 @@
                         <td>{{$item->mem_name}}</td>
                         <td>{{$item->mem_email}}</td>
                         <td>
-                            <?php $res = App\Responsible::find($item->res_id); ?>
-                            <span class="badge badge-success px-2 py-1">{{$res->res_name}}</span>
+                            <span class="badge badge-success px-2 py-1">{{$item->mem_position}}</span>
                         </td>
                         <td>{{$item->updated_at->diffforHumans()}}</td>
                         <td>

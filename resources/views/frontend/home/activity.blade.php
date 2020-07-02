@@ -5,14 +5,21 @@
             @foreach ($activity as $get)
             <div class="col-md-4 mb-2">
                 <div class="card card-shadow">
-                    <?php $getter = App\Phototitle::find($get->photo_id) ?>
-                    <img src="{{asset('/uploads/' . $getter->image)}}" class="card-img-top max-height" alt="... ">
+                    <?php 
+                        $ary = unserialize($get->act_memory);
+                        $ary_limit = array_slice($ary, 0,1);
+                    ?>
+                    @foreach($ary_limit as $getimage)
+                        <img src="{{asset('/uploads/'. $getimage)}}" class="card-img-top max-height">
+                    @endforeach
+                    {{-- <img src="{{asset('/uploads/' . $get->act_memory)}}" class="card-img-top max-height" alt="..." title="{{$get->act_title}}" > --}}
                     <div class="card-body">
                         <h5 class="card-title">
                             <?php $getter = App\Category::find($get->cat_id) ?>
                             {{$getter->cat_name}}
                         </h5>
-                        <a href="# " type="button " class="btn btn-md my-btn float-right"> View More </a>
+                        <?php $replacingname = str_replace(' ', '-', $getter->cat_name); ?>
+                        <a href="/activities/{{$get->id}}-{{$replacingname}}" type="button " class="btn btn-md my-btn float-right"> View More </a>
                     </div>
                 </div>
             </div>
