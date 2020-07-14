@@ -1,4 +1,5 @@
-@include('frontend.layouts.master')
+@extends('frontend.layouts.master')
+@section('content')
 @include('frontend.post.cateroute')
 <section class="first-bg pt-5 pb-5">
     <div class="container">
@@ -30,4 +31,4 @@
         </div>
     </div>
 </section>
-@include('frontend.layouts.footer')
+@endsection

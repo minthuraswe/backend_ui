@@ -16,6 +16,7 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('cat_id');
+            $table->unsignedBigInteger('user_id');
            
             $table->string('post_title');
             $table->longtext('post_description');
@@ -23,6 +24,7 @@ class CreatePostsTable extends Migration
             
             $table->timestamps();
             $table->foreign('cat_id')->references('id')->on('categories');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

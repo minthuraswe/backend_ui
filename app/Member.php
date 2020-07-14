@@ -8,7 +8,7 @@ class Member extends Model
 {
     protected $fillable = [
         'mem_name','mem_email','mem_age','mem_phone','mem_address','mem_description',
-        'mem_position','mem_university','mem_photo',
+        'mem_position','mem_university','mem_photo', 'year_id', 'mem_link'
     ];
 
     protected static function boot(){
@@ -29,4 +29,7 @@ class Member extends Model
         searchdata();
     }
 
+    public function yearofservices(){
+        return $this->hasMany('App\Yearofservice');
+    }
 }

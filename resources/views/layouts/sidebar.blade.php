@@ -3,8 +3,8 @@
         <h5 class="border-0  pt-3 pb-2 clcc">CLCC</h5>
     </li>
     <ul class="list-unstyled">
-        <a href="/home">
-            @if(request()->is('home'))
+        <a href="/dashboard">
+            @if(request()->is('dashboard'))
             <li class="p-3 active">
                 <svg class="bi bi-house-fill pb-1" width="1.3em" height="1.3em" viewBox="0 0 16 16" fill="currentColor"
                     xmlns="http://www.w3.org/2000/svg">
@@ -111,6 +111,25 @@
                         d="M13.81 4H2.19a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4zM2.19 3A2 2 0 0 0 .198 5.181l.637 7A2 2 0 0 0 2.826 14h10.348a2 2 0 0 0 1.991-1.819l.637-7A2 2 0 0 0 13.81 3H2.19z" />
                 </svg> Category
                 <span class="badge badge-light float-right">{{$count_cat}}</span>
+            </li>
+            @endif
+        </a>
+
+        <a href="/yearofservice">
+            @if(request()->is('yearofservice'))
+            <li class="p-3 active">
+                <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi pb-1 bi-check-square-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm10.03 4.97a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+                </svg> Year of Service
+                <span class="badge badge-light float-right">{{$count_year}}</span>
+            </li>
+            @else
+            <li class="p-3">
+                <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi pb-1 bi-check-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                    <path fill-rule="evenodd" d="M10.97 4.97a.75.75 0 0 1 1.071 1.05l-3.992 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.236.236 0 0 1 .02-.022z"/>
+                </svg> Year of Service
+                <span class="badge badge-light float-right">{{$count_year}}</span>
             </li>
             @endif
         </a>

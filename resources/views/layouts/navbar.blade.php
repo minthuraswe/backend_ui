@@ -1,8 +1,17 @@
 <nav class="navbar navbar-expand-md navbar-light shadow-sm">
-    <a class="navbar-brand" href="{{ url('/home') }}">
+    <a class="navbar-brand" href="{{ url('/dashboard') }}">
         Dashboard
     </a>
-
+    <a href="/ads" class="btn btn-info"> ကြော်ငြာထည့်သွင်းရန်</a>
+    <div style="padding-left:13rem">
+        Your are here >>
+            CLCC
+            <?php $segments = ''; ?>
+            @foreach(Request::segments() as $segment)
+                <?php $segments .= '/'.$segment; ?>
+                    <span>/ {{$segment}} </span>
+            @endforeach       
+    </div>
     {{-- <a class="btn btn-primary" href="/filemanager">Upload File</a> --}}
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

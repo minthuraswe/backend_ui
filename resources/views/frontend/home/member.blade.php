@@ -8,9 +8,13 @@
                     <img src="{{asset('/uploads/'. $get->mem_photo)}}" class="card-img-top max-height" alt="..." title="{{$get->mem_name}}">
                     <div class="card-body">
                         <h5 class="card-title">{{$get->mem_name}}</h5>
-                        <?php $striptags = strip_tags($get->mem_description) ?>
+                        <?php 
+                        $striptags = strip_tags($get->mem_description);
+                        $replacingname = str_replace(' ', '-', $get->mem_name);
+                        ?>
                             <p> {{Str::limit($striptags, 80)}} </p>
-                        <a href="#" type="button" class="btn btn-md my-btn float-right"> Read More </a>
+                        
+                        <a href="/members/{{$get->id}}-{{$replacingname}}" type="button" class="btn btn-md my-btn float-right"> Read More </a>
                     </div>
                 </div>
             </div>

@@ -53,6 +53,7 @@ class PostController extends Controller
             'post_title' => request('post'),
             'post_image' => $filename,
             'cat_id' => request('category'),
+            'user_id' => auth()->id(),
             'post_description' => request('description'),
         ]);
     

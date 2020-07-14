@@ -21,6 +21,10 @@ function checkNumeric(){
     session()->flash('errorcategory', 'The category can not be number. Try again!!');
 }
 
+function ads($checkpaid){
+    session()->flash('error', 'You can not choose '. $checkpaid.'.If you wish, need to remove or edit first exists ads.');
+}
+
 function imagePath() 
 {
     return public_path('uploads/');

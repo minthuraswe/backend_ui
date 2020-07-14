@@ -1,3 +1,18 @@
+<section class="pt-3 pb-3 bg-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                @foreach ($ads as $get)
+                @if($get->checkpaid == 'ads-bottom')
+                    <a href="{{$get->link}}">
+                        <img src="{{asset('/uploads/'. $get->image)}}" width="100%">
+                    </a>
+                @endif
+                @endforeach
+            </div>
+        </div>
+    </div>
+</section>
 <section class="pt-5 pb-5 main-bg">
     <div class="container">
         <div class="row text-center footer-text">
@@ -22,7 +37,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="heading pt-3 pb-2 text-center">&copy; 2020 Chin Literature & Culture Committee.&nbsp;All Rights Reserved.</div>
+                <div class="heading pt-3 pb-2 text-center">&copy; 2020 Chin Literature & Culture Committee.&nbsp;All Rights Reserved. Designed By dotCom.</div>
             </div>
         </div>
     </div>

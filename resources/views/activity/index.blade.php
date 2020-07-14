@@ -14,7 +14,7 @@
                 <div class="ml-auto">
                     <a href="{{url('/activity/create')}}" class="btn btn-primary mb-3  p-2">
                         <img src="{{asset('css/images/plus.png')}}" class="mb-1 mr-1">Add New Activity</a>
-                    <a href="{{url('/home')}}" class="btn btn-outline-primary mb-3 p-2">Back</a>
+                    <a href="{{url('/dashboard')}}" class="btn btn-outline-primary mb-3 p-2">Back</a>
                 </div>
             </div>
             @if(session('success'))

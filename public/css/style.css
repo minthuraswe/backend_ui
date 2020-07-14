@@ -116,3 +116,17 @@ a,
 .badge {
     font-size: 80%!important;
 }
+
+.section-padding-100 {
+    padding-top: 305px;
+    padding-bottom: 305px;
+}
+
+.section-padding-login {
+    padding-top: 200px;
+    padding-bottom: 170px;
+}
+
+.login-bg {
+    background-color: #faf6f7;
+}

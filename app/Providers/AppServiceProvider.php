@@ -8,7 +8,7 @@ use App\Member;
 use App\Post;
 use App\Activity;
 use App\Category;
-
+use App\Yearofservice;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -34,5 +34,6 @@ class AppServiceProvider extends ServiceProvider
         View::share('count_post', Post::count());
         View::share('count_act', Activity::count());
         View::share('count_cat', Category::count());
+        View::share('count_year', Yearofservice::count());
     }
 }

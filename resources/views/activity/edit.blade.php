@@ -44,8 +44,8 @@
                     </div>
                     <div class="row form-group mt-3 justify-content-center">
                         <div class="col-md-8">
-                            <button type="submit" class="btn btn-success mr-2">Update</button>
                             <a href="{{url('/activity')}}" class="btn btn-secondary">Cancel</a>
+                            <button type="submit" class="btn btn-success mr-2">Update</button>
                         </div>
                     </div>
             </div>

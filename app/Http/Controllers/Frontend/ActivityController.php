@@ -6,16 +6,19 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Activity;
 use App\Category;
+use App\Ads;
 
 class ActivityController extends Controller
 {
     public function index(){
         $activity = Activity::all();
-        return view('frontend.activity.index', compact('activity'));
+        $ads = Ads::all();
+        return view('frontend.activity.index', compact('activity', 'ads'));
     }
 
     public function show($id){
         $activity = Activity::find($id);
-        return view('frontend.activity.viewmore', compact('activity'));
+        $ads = Ads::all();
+        return view('frontend.activity.viewmore', compact('activity', 'ads'));
     }
 }

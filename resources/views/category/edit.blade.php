@@ -25,8 +25,8 @@
                                 @endif
                             </div>
                             <div>
-                                <button type="submit" class="btn btn-success mr-2">Update</button>
                                 <a href="{{url('/category')}}" class="btn btn-secondary">Cancel</a>
+                                <button type="submit" class="btn btn-success mr-2">Update</button>
                             </div>
                             </div>
                     </form>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Member;
+use App\Yearofservice;
 
 
 class MemberController extends Controller
@@ -28,7 +29,8 @@ class MemberController extends Controller
      */
     public function create()
     {
-        return view('member.create');
+        $yearofservice = Yearofservice::orderBy('start_year', 'desc')->get();
+        return view('member.create', compact('yearofservice'));
     }
 
     /**
@@ -56,7 +58,9 @@ class MemberController extends Controller
             'mem_description' => request('description'),
             'mem_photo' => $filename,
             'mem_position' => request('position'),
+            'mem_link' => request('link'),
             'mem_university' => request('university'),
+            'year_id' => request('yearofservice'),
         ]);
 
         return redirect('member');
@@ -83,7 +87,8 @@ class MemberController extends Controller
     public function edit($id)
     {
         $mem = Member::find($id);
-        return view('member.edit', compact('mem'));
+        $yearofservice = Yearofservice::all();
+        return view('member.edit', compact('mem', 'yearofservice'));
     }
 
     /**
@@ -109,8 +114,10 @@ class MemberController extends Controller
         $mem->mem_address = request('address');
         $mem->mem_description = request('description');
         $mem->mem_photo = $filename;
+        $mem->mem_link = request('link');
         $mem->mem_position = request('position');
         $mem->mem_university = request('university');
+        $mem->year_id = request('yearofservice');
 
         $mem->save();
         return redirect('member');
@@ -137,6 +144,7 @@ class MemberController extends Controller
             'phone' => 'required|numeric',
             'address' => 'required',
             'position' => 'required',
+            'yearofservice' => 'required',
             'description' => 'required',
             'photo' => 'required',
             'university' => 'required',

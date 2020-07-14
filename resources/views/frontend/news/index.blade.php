@@ -1,4 +1,5 @@
-@include('frontend.layouts.master')
+@extends('frontend.layouts.master')
+@section('content')
 <section class="first-bg border-bottom">
     <div class="container">
         <div class="row">
@@ -40,16 +41,7 @@
                 @endforeach
              
                 <div>
-                    <ul class="pagination">
-                        <li class="page-item {{$post->currentPage() == 1 ? 'disabled' : ''}}">
-                            <a class="page-link" href="{{$post->previousPageUrl()}}" tabindex="-1" aria-disabled="true">Previous</a>
-                        </li>
-                        {{$post->links()}}
-                        <?php $lastpage = $post->lastPage() ?>
-                        <li class="page-item {{$post->currentPage() == $lastpage ? 'disabled' : ''}}">
-                            <a class="page-link" href="{{$post->nextPageUrl()}}">Next</a>
-                        </li>
-                    </ul>
+                    {{$post->links()}}      
                 </div>
 
             </div>
@@ -74,17 +66,30 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="row">
+                <div class="row mb-5">
                     <div class="col-md-12">
                         <h2>CLCC on Facebook</h2>
                         <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FChin-Literature-and-Culture-Committee-Yangon-1505732176322344%2F&tabs=timeline&width=350&height=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=314954856338556" width="350" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media" class="w-100"></iframe>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                     @foreach ($ads as $get)
+                        @if($get->checkpaid == 'ads-top')
+                            <a href="{{$get->link}}">
+                                <img src="{{asset('/uploads/'. $get->image)}}" width="100%">
+                            </a>
+                        @endif
+                     @endforeach
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+@endsection
 
+@push('scripts')
 <script>
     var fbButton = document.getElementById('fb-share-button');
     var url = window.location.href;
@@ -97,5 +102,6 @@
         return false;
     });
 </script>
+@endpush
 
-@include('frontend.layouts.footer')
+    

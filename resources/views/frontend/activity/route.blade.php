@@ -7,8 +7,7 @@
                     <a href="/activities" class="news-link">Activities</a> / 
                     <?php $act = App\Category::find($activity->cat_id);
                      $replacingname = str_replace(' ', '-', $act->cat_name) ?> 
-                    <a href="<?php $_SERVER['PHP_SELF'] ?>" class="news-link">
-                    {{$act->cat_name}}</a> 
+                    {{$act->cat_name}}
                 </div>
             </div>
         </div>

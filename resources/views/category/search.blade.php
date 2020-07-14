@@ -8,7 +8,7 @@
                     <h2>Creating Category</h2>
                 </div>
                 <div class="ml-auto">
-                    <a href="{{url('/home')}}" class="btn btn-primary mb-3 p-2">Back</a>
+                    <a href="{{url('/dashboard')}}" class="btn btn-primary mb-3 p-2">Back</a>
                 </div>
             </div>
 

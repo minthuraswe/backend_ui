@@ -1,4 +1,6 @@
-@include('frontend.layouts.master')
+@extends('frontend.layouts.master')
+@section('content')
 @include('frontend.post.route')
 @include('frontend.post.readmore')
-@include('frontend.layouts.footer')
+@endsection
+

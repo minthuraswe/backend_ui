@@ -1,4 +1,5 @@
-@include('frontend.layouts.master')
+@extends('frontend.layouts.master')
+@section('content')
 <section class="first-bg border-bottom">
     <div class="container">
         <div class="row">
@@ -19,11 +20,11 @@
                 <div class="card card-shadow">
                     <?php 
                         $ary = unserialize($get->act_memory);
-                        $ary_limit = array_slice($ary, 0,1);
+                        $key = array_rand($ary);
+                        $value = $ary[$key];
                     ?>
-                    @foreach($ary_limit as $getimage)
-                        <img src="{{asset('/uploads/'. $getimage)}}" class="card-img-top max-height">
-                    @endforeach
+                    <img src="{{asset('/uploads/'. $value)}}" class="card-img-top max-height">
+
                     {{-- <img src="{{asset('/uploads/' . $get->act_memory)}}" class="card-img-top max-height" alt="..." title="{{$get->act_title}}" > --}}
                     <div class="card-body">
                         <h5 class="card-title">
@@ -39,3 +40,4 @@
         </div>
     </div>
 </section>
+@endsection

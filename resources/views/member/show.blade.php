@@ -25,6 +25,12 @@
                     </li>
                     <li class="px-3 border-bottom py-2">
                         Responsible = <span class="badge badge-success  mb-1 px-2 py-1">{{$mem->mem_position}}</span>
+                    </li>
+                    <li class="px-3 border-bottom py-2">
+                        <?php $year = App\Yearofservice::find($mem->year_id); ?>
+                        Year of Service = <span class="badge badge-info  mb-1 px-2 py-1">{{$year->start_year}}</span>
+                        <span class="badge badge-info  mb-1 px-2 py-1">{{$year->end_year}}</span>
+                    </li>
                     <li class="px-3 border-bottom py-2">
                         <?php 
                             $dateOfBirth = $mem->mem_age;
@@ -36,6 +42,11 @@
                     <li class="px-3 border-bottom py-2">
                         Phone = {{$mem->mem_phone}}
                     </li>
+                    @if($mem->mem_link == true)
+                    <li class="px-3 border-bottom py-2">
+                        Link = {{$mem->mem_link}}
+                    </li>
+                    @endif
                     <li class="px-3 border-bottom py-2">
                         Photo = <img src="{{asset('/uploads/'. $mem->mem_photo)}}" class="rounded-circle" width="50px" height="50px" title="{{$mem->mem_photo}}">
                     </li>

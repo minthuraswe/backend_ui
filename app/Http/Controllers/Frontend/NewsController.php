@@ -6,12 +6,14 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Category;
+use App\Ads;
 
 class NewsController extends Controller
 {
     public function index(){
         $post = Post::paginate(5);
-        $recent = Post::limit(8)->get();
-        return view('frontend.news.index', compact('post', 'recent'));
+        $recent = Post::inRandomOrder()->limit(6)->get();
+        $ads = Ads::all();
+        return view('frontend.news.index', compact('post', 'recent', 'ads'));
     }
 }

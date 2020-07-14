@@ -81,6 +81,27 @@
                     </div>
 
                     <div class="form-group row mt-3">
+                        <label for="text" class="col-md-2 col-form-label text-md-right">{{ __('Year of Service') }}</label>
+                        <div class="col-md-8">
+                            <select name="yearofservice" id="" class="form-control">
+                                <option value=""> Select Year of service</option>
+                                @foreach ($yearofservice as $getyear)
+                                @if(Request::old('yearofservice') == $getyear->id)
+                                <option value="{{$getyear->id}}" selected>{{$getyear->start_year}}-{{$getyear->end_year}}</option>
+                                @else
+                                <option value="{{$getyear->id}}">{{$getyear->start_year}}-{{$getyear->end_year}}</option>
+                                @endif
+                                @endforeach
+                            </select>
+                            @if($errors->has('yearofservice'))
+                            <span class="text-danger font-weight-bold">
+                                {{$errors->first('yearofservice')}}
+                            </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group row mt-3">
                         <label for="age" class="col-md-2 col-form-label text-md-right">{{ __('Born') }}</label>
                         <div class="col-md-8">
                             <input type="date" class="form-control" name="age" value="{{old('age')}}">
@@ -113,6 +134,15 @@
                             </span>
                             @endif
                         </div>
+                    </div>
+
+                    <div class="form-group row mt-3">
+                        <label for="text" class="col-md-2 col-form-label text-md-right">{{ __('Facebook Link') }}</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="link" placeholder="Member Link"
+                                value="{{old('link')}}">
+                                <small class="text-muted">Optional(you can skip)</small>
+                            </div>
                     </div>
 
                     <div class="form-group row mt-3">

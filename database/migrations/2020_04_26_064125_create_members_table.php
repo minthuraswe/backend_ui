@@ -15,16 +15,21 @@ class CreateMembersTable extends Migration
     {
         Schema::create('members', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('year_id');
+            
             $table->string('mem_name');
             $table->string('mem_email');
             $table->string('mem_age');
             $table->string('mem_phone');
             $table->text('mem_photo');
             $table->string('mem_address');
+            $table->string('mem_link')->nullable();
             $table->string('mem_position');
             $table->string('mem_university');
             $table->longtext('mem_description'); 
+
             $table->timestamps();
+            $table->foreign('year_id')->references('id')->on('yearofservices');
         });
     }
 

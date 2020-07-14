@@ -13,7 +13,7 @@
                                 <a class="nav-link" href="/index">Home<span class="sr-only">(current)</span></a>
                             </li>
                             <li class="nav-item navbar-mr-bb ">
-                                <a class="nav-link" href="members.html">Members</a>
+                                <a class="nav-link" href="/members">Members</a>
                             </li>
                             <li class="nav-item navbar-mr-bb ">
                                 <a class="nav-link" href="/activities">Activities</a>
@@ -22,10 +22,13 @@
                                 <a class="nav-link" href="/news">News</a>
                             </li>
                             <li class="nav-item navbar-mr-bb ">
-                                <a class="nav-link" href="#">History</a>
+                                <a class="nav-link" href="/history">History</a>
+                            </li>
+                            <li class="nav-item navbar-mr-bb">
+                                <a class="nav-link" href="/contact">Contact</a>
                             </li>
                             <li class="nav-item text-right">
-                                <a class="nav-link" href="#">Contact</a>
+                                <a class="nav-link" href="/about">About</a>
                             </li>
                         </ul>
                     </div>
