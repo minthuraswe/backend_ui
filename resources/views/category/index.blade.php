@@ -13,7 +13,7 @@
             </div>
 
             <div class="card">
-                <form action="{{url('/category')}}" method="post">
+                <form action="{{url('/category')}}" method="post" accept-charset="UTF-8">
                     @csrf
                     <div class="form-group row mt-3">
                         <label for="name"

@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="card">
-                <form action="{{url('/member')}}" method="post" enctype="multipart/form-data">
+                <form action="{{url('/member')}}" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
                     @csrf
 
                     <div class="form-group row mt-3">

@@ -34,12 +34,8 @@ h2 {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
+    background-attachment: fixed;
     background-image: url('/frontend/images/sample.JPG');
-}
-
-.divider-bg-fixed {
-    background-attachment: fixed !important;
-    color: #faf6f7;
 }
 
 .section-padding-100 {
@@ -238,6 +234,11 @@ button:focus {
     color: #fff !important;
 }
 
+.modal-open {
+    padding: 0 !important;
+    overflow-y: auto;
+}
+
 
 /* share button to facebook */
 
@@ -267,4 +268,11 @@ button:focus {
     color: white;
     font-size: 14px;
     padding: 0 3px
+}
+
+
+/* search button */
+
+.search-bg {
+    background-color: #f38e18!important;
 }

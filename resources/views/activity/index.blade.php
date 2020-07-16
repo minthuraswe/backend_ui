@@ -7,7 +7,7 @@
                 <div>
                     <h2>Activities</h2>
                 </div>
-                <form action="/search-activity" method="get" class="form-inline" >
+                <form action="/search-activity" method="get" class="form-inline" accept-charset="UTF-8">
                     <input class="mr-sm-2 ml-sm-2 mb-3" type="search" placeholder="Search..." aria-label="Search" name="search">
                     <button class="mb-3" type="submit">Search</button>
                 </form> 

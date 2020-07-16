@@ -17,7 +17,7 @@
         <div class="row mb-2">
             <div class="col-md-12">
                 <div class="card p-3 shadow">
-                    <form enctype="multipart/form-data" action="{{url('/ads')}}" method="POST">
+                    <form enctype="multipart/form-data" action="{{url('/ads')}}" method="POST" accept-charset="UTF-8">
                         @csrf
                         <div class="form-group">
                             <label for="file">Add Your Ads file</label>

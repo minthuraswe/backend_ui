@@ -27,9 +27,51 @@
                             <li class="nav-item navbar-mr-bb">
                                 <a class="nav-link" href="/contact">Contact</a>
                             </li>
-                            <li class="nav-item text-right">
+                            <li class="nav-item navbar-mr-bb">
                                 <a class="nav-link" href="/about">About</a>
                             </li>
+                           <li class="nav-item">
+                            <a href="#" class="nav-link text-right" data-toggle="modal" data-target="#exampleModal" title="search">
+                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                                    <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                                </svg>
+                            </a>
+                           </li>
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content search-bg">
+                                       
+                                        {{-- <div class="modal-header">
+                                           
+                                        </div> --}}
+                                       
+                                        <div class="modal-body p-0">
+                                            <button type="button" class="close text-light p-0" data-dismiss="modal" aria-label="Close" title="close">
+                                                <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-x" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708-.708l7-7a.5.5 0 0 1 .708 0z"/>
+                                                    <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 0 0 0 .708l7 7a.5.5 0 0 0 .708-.708l-7-7a.5.5 0 0 0-.708 0z"/>
+                                                </svg>
+                                            </button>  
+                                      
+                                            <form action="{{url('/search')}}" method="get" accept-charset="UTF-8">
+                                                <div class="input-group p-4">
+                                                    <input type="search" class="form-control" placeholder="Search"  name="search" aria-label="Search" style="padding:1.375rem;">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-primary" type="submit"  id="button-addon2" title="search">
+                                                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                                                <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                                                                <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>                                    
+                            </div>
                         </ul>
                     </div>
                 </nav>
@@ -37,3 +79,8 @@
         </div>
     </div>
 </section>
+
+
+
+
+

@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <h2>Editing Category</h2>
                 <div class="card">
-                    <form action="{{url('category/' . $cat->id )}}" method="post">
+                    <form action="{{url('category/' . $cat->id )}}" method="post" accept-charset="UTF-8">
                         @method('PUT')
                         @csrf
                             <div class="form-group row mt-3">

@@ -30,6 +30,6 @@ class Member extends Model
     }
 
     public function yearofservices(){
-        return $this->hasMany('App\Yearofservice');
+        return $this->hasMany('App\Yearofservice', 'start_year');
     }
 }

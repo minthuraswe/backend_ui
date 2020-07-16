@@ -5,7 +5,7 @@
         <div class="col-md-12">
             <h2>Editing Post</h2>
             <div class="card">
-                <form action="{{url('post/'. $post->id)}}" method="post" enctype="multipart/form-data">
+                <form action="{{url('post/'. $post->id)}}" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
                     @method('PUT')
                     @csrf
                     <div class="form-group row mt-3">

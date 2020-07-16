@@ -7,7 +7,7 @@
                 <div>
                     <h2>Posts</h2>
                 </div>
-                <form class="form-inline">
+                <form class="form-inline" accept-charset="UTF-8">
                     <input class="mr-sm-2 ml-sm-2 mb-1" type="search" placeholder="Search" aria-label="Search"
                         name="search">
                     <a href="/search-post"><button class="mb-1" type="submit">Search</button></a>

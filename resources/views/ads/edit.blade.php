@@ -5,7 +5,7 @@
         <div class="row mb-2">
             <div class="col-md-12">
                 <div class="card p-3 shadow">
-                    <form enctype="multipart/form-data" action="{{url('ads/' . $ads->id)}}" method="POST">
+                    <form enctype="multipart/form-data" action="{{url('ads/' . $ads->id)}}" method="POST" accept-charset="UTF-8">
                         @method('PUT')
                         @csrf
                         <div class="form-group">

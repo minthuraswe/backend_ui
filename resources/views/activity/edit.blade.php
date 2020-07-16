@@ -6,7 +6,7 @@
             <h2>Editing Activity</h2>
 
             <div class="card">
-                <form action="{{url('activity/'. $act->id)}}" method="post" enctype="multipart/form-data">
+                <form action="{{url('activity/'. $act->id)}}" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
                     @method('PUT')
                     @csrf
                     <div class="form-group row mt-3">

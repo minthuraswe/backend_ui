@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="card">
-                <form action="{{url('/post')}}" method="post" enctype="multipart/form-data">
+                <form action="{{url('/post')}}" method="post" enctype="multipart/form-data" accept-charset="UTF-8">
                     @csrf
                     <div class="form-group row mt-3">
                         <label for="name" class="col-md-2 col-form-label text-md-right">{{ __('Post Title') }}</label>

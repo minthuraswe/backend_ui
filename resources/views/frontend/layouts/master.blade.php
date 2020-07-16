@@ -11,6 +11,7 @@
        
     <!-- my css -->
     <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('frontend/css/toggled-search-bar.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}">
     @yield('styles')
 </head>

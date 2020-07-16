@@ -38,6 +38,7 @@ Route::group(['namespace'=>'Frontend'], function(){
     Route::get('/contact', 'IndexController@contact');
     Route::get('/history', 'IndexController@history');
     Route::get('/news', 'NewsController@index');
+    Route::get('/search', 'SearchController@index');
     Route::get('/news/{id}-{post_title}', 'PostController@show');
     Route::get('/news/category/{id}-{cat_name}', 'PostController@categoryPost');
     Route::get('/activities', 'ActivityController@index');
