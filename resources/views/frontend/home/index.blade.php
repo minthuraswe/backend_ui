@@ -1,7 +1,6 @@
 @extends('frontend.layouts.master')
 @section('content')
 @include('frontend.home.divide')
-@include('frontend.home.adstop')
 @include('frontend.home.whatwedo')
 @include('frontend.home.member')
 @include('frontend.home.activity')

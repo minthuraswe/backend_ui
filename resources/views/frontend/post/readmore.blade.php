@@ -10,9 +10,10 @@
                                 <svg width="1.2em" height="1.2em" viewBox="0 0 16 16" class="bi bi-person mb-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M13 14s1 0 1-1-1-4-6-4-6 3-6 4 1 1 1 1h10zm-9.995-.944v-.002.002zM3.022 13h9.956a.274.274 0 0 0 .014-.002l.008-.002c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664a1.05 1.05 0 0 0 .022.004zm9.974.056v-.002.002zM8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
                                 </svg> 
-                                    @foreach ($admin as $get)
-                                        <span class="mr-1">{{$get->user->name}} </span> 
-                                    @endforeach
+                                @foreach ($admin as $get)
+                                    <span class="mr-1">{{$get->user->name}}</span> 
+                                @endforeach
+                           
                                
                                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-calendar mb-2" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" d="M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1zm1-3a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2z"/>
@@ -70,12 +71,34 @@
                         </div>
                     </div>
                 </div>
-               <div class="row">
+               <div class="row mb-5">
                    <div class="col-md-12">
                        <h2>CLCC on Facebook</h2>
                        <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FChin-Literature-and-Culture-Committee-Yangon-1505732176322344%2F&tabs=timeline&width=350&height=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=314954856338556" width="auto" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media" class="w-100"></iframe>
                    </div>
                </div>  
+               <div class="row">
+                    <div class="col-md-12">
+                        @if($check_ads->exists())
+                            @foreach ($ads as $get)
+                                @if($get->checkpaid == 'ads-news')
+                                    <a href="{{$get->link}}">
+                                        <img src="{{asset('/uploads/'. $get->image)}}" width="100%">
+                                    </a>
+                                @endif
+                            @endforeach
+                        @else
+                            <div class="bg-light text-center p-5 text-muted" style="height:300px">
+                                <h2 class="mb-3 mt-3">ကြော်ငြာထည့်သွင်းရန်</h2>
+                                <h2 class="mb-3">350 x 300</h2>
+                                <h5>contact us - 0972327926</h5>
+                            </div>
+                        @endif
+                    
+                        
+                    </div>
+               </div>
+            </div>
             </div>
         </div>
     </div>

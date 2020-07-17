@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="pt-3 pb-3">
-                    <a href="/index" class="news-link">Home</a> / 
+                    <a href="/" class="news-link">Home</a> / 
                     About
                 </div>
             </div>

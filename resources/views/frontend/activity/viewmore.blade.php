@@ -9,7 +9,7 @@
             ?>
             @foreach ($ary as $image)
             <div class="col-md-3 mb-4">
-                <img src="{{asset('/uploads/'. $image)}}"  class="rounded max-height w-100">
+                <img src="{{asset('/uploads/'. $image)}}"  class="rounded max-h w-100">
             </div>
             @endforeach
         </div>

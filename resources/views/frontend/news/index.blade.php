@@ -3,11 +3,28 @@
 <section class="first-bg border-bottom">
     <div class="container">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-9">
                 <div class="pt-3 pb-3">
-                    <a href="/index" class="news-link">Home</a> / 
-                    <a href="/news" class="news-link">News</a> 
+                    <a href="/" class="news-link">Home</a> / 
+                    News
                 </div>
+            </div>
+            <div class="col-md-3">
+                <form action="{{url('/search/post')}}" method="get" accept-charset="UTF-8" class="ml-auto my-2 w-100" >
+                    <div class="input-group">
+                    <input type="search" class="form-control" placeholder="Search"  name="search" aria-label="Search">
+                    <div class="input-group-append">
+                    <button class="btn search-btn" type="submit"  id="button-addon2" title="search">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search text-light" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                            <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                        </svg>
+                    </button>
+                    </div>
+                </div>
+              
+            </form>
+    
             </div>
         </div>
     </div>
@@ -66,23 +83,13 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="row mb-5">
+                <div class="row">
                     <div class="col-md-12">
                         <h2>CLCC on Facebook</h2>
                         <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FChin-Literature-and-Culture-Committee-Yangon-1505732176322344%2F&tabs=timeline&width=350&height=400&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=314954856338556" width="350" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media" class="w-100"></iframe>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                     @foreach ($ads as $get)
-                        @if($get->checkpaid == 'ads-top')
-                            <a href="{{$get->link}}">
-                                <img src="{{asset('/uploads/'. $get->image)}}" width="100%">
-                            </a>
-                        @endif
-                     @endforeach
-                    </div>
-                </div>
+               
             </div>
         </div>
     </div>

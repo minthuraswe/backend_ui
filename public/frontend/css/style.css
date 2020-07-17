@@ -114,6 +114,14 @@ h2 {
     color: #f38e18;
 }
 
+.max-h {
+    max-height: 200px;
+}
+
+.active {
+    color: #f38e18!important;
+}
+
 
 /* customize class */
 
@@ -234,10 +242,12 @@ button:focus {
     color: #fff !important;
 }
 
+
+/* 
 .modal-open {
     padding: 0 !important;
     overflow-y: auto;
-}
+} */
 
 
 /* share button to facebook */
@@ -273,6 +283,6 @@ button:focus {
 
 /* search button */
 
-.search-bg {
-    background-color: #f38e18!important;
+.search-btn {
+    background-color: #f38e18;
 }

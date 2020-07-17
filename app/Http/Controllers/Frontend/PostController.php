@@ -19,10 +19,11 @@ class PostController extends Controller
     public function show($id){
         $category = Category::all();
         $post = Post::find($id);
-        $admin = Post::with('user')->get();
+        $admin = Post::with('user')->limit(1)->get();
+        $check_ads = Ads::where('checkpaid', '=', 'ads-news');
         $ads = Ads::all();
         $recent = Post::inRandomOrder()->limit(4)->get();
-        return view('frontend.post.index', compact('post', 'recent', 'category', 'ads', 'admin'));
+        return view('frontend.post.index', compact('post', 'recent', 'category', 'ads', 'check_ads', 'admin'));
     }
     
     public function categoryPost($id){

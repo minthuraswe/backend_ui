@@ -17,17 +17,19 @@
                             <label for="text">Add Your Ads link</label>
                             <input type="text" class="form-control" name="link" value="{{$ads->link}}" required>
                         </div>
+                        <div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="place" id="inlineRadio1" value="ads-top" @if($ads->place == 'ads-top') checked @endif>
+                            <input class="form-check-input" type="radio" name="place" id="inlineRadio1" value="ads-top" {{$ads->checkpaid == 'ads-top' ? 'checked' : ''}}>
                             <label class="form-check-label" for="inlineRadio1">ads-top</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="place" id="inlineRadio1" value="ads-bottom" @if($ads->place == 'ads-bottom') checked @endif>
+                            <input class="form-check-input" type="radio" name="place" id="inlineRadio1" value="ads-bottom" {{$ads->checkpaid == 'ads-bottom' ? 'checked' : ''}}>
                             <label class="form-check-label" for="inlineRadio1">ads-bottom</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="place" id="inlineRadio1" value="ads-news" @if($ads->place == 'ads-news') checked @endif>
+                            <input class="form-check-input" type="radio" name="place" id="inlineRadio1" value="ads-news" {{$ads->checkpaid == 'ads-news' ? 'checked' : ''}} >
                             <label class="form-check-label" for="inlineRadio1">ads-news</label>
+                        </div>
                         </div>
                         <div class="mt-3">
                             <a href="/ads" class="btn btn-danger">Cancel</a>

@@ -33,12 +33,13 @@ Route::group(['namespace'=>'Backend', 'middleware' => 'auth'], function(){
 
 //Frontend Route list
 Route::group(['namespace'=>'Frontend'], function(){
-    Route::get('/index', 'IndexController@index');
+    Route::get('/', 'IndexController@index');
     Route::get('/about', 'IndexController@about');
     Route::get('/contact', 'IndexController@contact');
     Route::get('/history', 'IndexController@history');
     Route::get('/news', 'NewsController@index');
-    Route::get('/search', 'SearchController@index');
+    Route::get('/search/member', 'SearchController@member');
+    Route::get('/search/post', 'SearchController@post');
     Route::get('/news/{id}-{post_title}', 'PostController@show');
     Route::get('/news/category/{id}-{cat_name}', 'PostController@categoryPost');
     Route::get('/activities', 'ActivityController@index');
