@@ -3,7 +3,7 @@
 @include('frontend.home.divide')
 @include('frontend.home.whatwedo')
 @include('frontend.home.member')
-@include('frontend.home.activity')
 @include('frontend.home.uni')
+@include('frontend.home.activity')
 @include('frontend.home.post')
 @endsection

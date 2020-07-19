@@ -1,4 +1,4 @@
-<section class="pt-5 pb-5 first-bg">
+<section class="pt-5 first-bg">
     <div class="container">
         <h2>OUR ACTIVITIES</h2>
         <div class="row">

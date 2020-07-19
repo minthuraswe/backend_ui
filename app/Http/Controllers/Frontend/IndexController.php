@@ -12,7 +12,7 @@ use App\Ads;
 class IndexController extends Controller
 {
     public function index(){
-        $member = Member::latest()->limit(3)->get();
+        $member = Member::latest()->limit(8)->get();
         $activity = Activity::latest()->limit(3)->get();
         $post = Post::latest()->limit(3)->get();
         $ads = Ads::all();
