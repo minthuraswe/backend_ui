@@ -11,7 +11,7 @@
             <div class="col-md-3">
                 <form action="{{url('/search/member')}}" method="get" accept-charset="UTF-8" class="ml-auto my-2 w-100" >
                     <div class="input-group">
-                    <input type="search" class="form-control" placeholder="Search"  name="search" aria-label="Search">
+                    <input type="text" class="form-control" placeholder="Search"  name="search" aria-label="Search">
                     <div class="input-group-append">
                     <button class="btn search-btn" type="submit"  id="button-addon2" title="search">
                         <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search text-light" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

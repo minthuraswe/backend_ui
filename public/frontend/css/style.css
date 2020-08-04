@@ -28,13 +28,6 @@ h2 {
 }
 
 .divider-bg {
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-attachment: fixed;
     background-image: url('/frontend/images/sample.JPG');
 }
 
@@ -120,6 +113,10 @@ h2 {
 
 .active {
     color: #f38e18!important;
+}
+
+.unicode {
+    font-family: PyidaungSu;
 }
 
 

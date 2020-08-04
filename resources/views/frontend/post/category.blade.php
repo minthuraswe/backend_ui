@@ -6,7 +6,7 @@
         <div class="row">
             @foreach ($category_post as $get)
             <div class="col-md-4 mb-4">
-                <div class="card card-shadow">
+                <div class="card card-shadow unicode">
                     <img src="{{asset('/uploads/' . $get->post_image)}}" class="card-img-top max-height" title="{{$get->post_title}}">
                     <div class="card-body">
                         <h5 class="card-title">{{$get->post_title}}<br>
@@ -20,7 +20,7 @@
                         
                         <?php $striptags = strip_tags($get->post_description) ?>
                         <p>                            
-                            {{Str::limit($striptags, 80)}}
+                            {!!Str::limit($striptags, 80)!!}
                         </p>
                         <?php $replacingtitle = str_replace(' ', '-', $get->post_title); ?>
                         <a href="/news/{{$get->id}}-{{$replacingtitle}}" type="button " class="btn btn-md my-btn float-right"> Read More </a>

@@ -1,7 +1,7 @@
 <section class="first-bg border-bottom">
     <div class="container">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-9 unicode">
                 <div class="pt-3 pb-3">
                     <a href="/" class="news-link">Home</a> / 
                     <a href="/news" class="news-link">News</a> / 

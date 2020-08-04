@@ -29,12 +29,12 @@
                     </div>
                     @foreach ($search as $getdata)
                     <div class="col-md-12">
-                        <div class="card card-shadow mb-2">
+                        <div class="card card-shadow mb-2 unicode">
                             <div class="card-body">
                                 <?php $striptags = strip_tags($getdata->post_description) ?>
                                 <p class="mb-0"> 
                                     <?php $replacingtitle = str_replace(' ', '-', $getdata->post_title) ?>                           
-                                    <a href="/news/{{$getdata->id}}-{{$replacingtitle}}" class="news-link">{{Str::limit($striptags, 250)}}</a><br>
+                                    <a href="/news/{{$getdata->id}}-{{$replacingtitle}}" class="news-link">{!!Str::limit($striptags, 250)!!}</a><br>
                                     <small class="text-muted float-right">
                                        {{$getdata->updated_at->diffForHumans()}}
                                     </small>

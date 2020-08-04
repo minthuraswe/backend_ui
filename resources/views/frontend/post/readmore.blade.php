@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <div class="card card-shadow mb-2">
+                <div class="card card-shadow mb-2 unicode">
                     <img src="{{asset('/uploads/' . $post->post_image)}}" class="card-img-top" width="auto" height="auto" title="{{$post->post_title}}">
                     <div class="card-body">
                         <h5 class="card-title">{{$post->post_title}}<br>

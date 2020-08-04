@@ -25,7 +25,7 @@
                 @endif for "{{$searchdata}}"
                 <a href="/post" class="float-right text-info">Back to post</a>
             </div>
-            <table class="table table-striped table-sm">
+            <table class="table table-striped table-sm unicode">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -47,7 +47,7 @@
                         </td>
                         <td>
                             <?php $striptag = strip_tags($item->post_description) ?>
-                            {{Str::limit($striptag, 20)}}
+                            {!!Str::limit($striptag, 20)!!}
                         </td>
                         <td>{{$item->updated_at->diffforHumans()}}</td>
                         <td>
