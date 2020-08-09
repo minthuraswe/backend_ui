@@ -14,7 +14,7 @@
             
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-body card-shadow">
+                    <div class="card-body card-shadow unicode">
                         <h4>{{$member->mem_name}} | <span class="aim">{{$member->mem_position}}
                         <?php $year = App\Yearofservice::find($member->year_id) ?>
                         <small>({{$year->start_year}}-{{$year->end_year}})</small></span></h4>
