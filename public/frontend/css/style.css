@@ -29,6 +29,8 @@ h2 {
 
 .divider-bg {
     background-image: url('/frontend/images/sample.JPG');
+    background-position: center;
+    background-size: cover;
 }
 
 .section-padding-100 {
